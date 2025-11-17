@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Star, Calendar, MapPin, ArrowRight, Heart, Zap, Smile, Menu, X, Circle } from 'lucide-react';
+import { Star, Calendar, MapPin, ArrowRight, Heart, Zap, Smile, Menu, X } from 'lucide-react';
 
 // --- Utility Components ---
 
-const Sticker = ({ children, rotation = '3deg', color = 'bg-yellow-400', className = '' }) => (
+interface StickerProps {
+  children: React.ReactNode;
+  rotation?: string;
+  color?: string;
+  className?: string;
+}
+
+const Sticker: React.FC<StickerProps> = ({ children, rotation = '3deg', color = 'bg-yellow-400', className = '' }) => (
   <div 
     className={`inline-flex items-center justify-center px-6 py-3 font-black uppercase tracking-wider border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform hover:scale-110 hover:rotate-0 transition-all cursor-pointer ${color} ${className}`}
     style={{ transform: `rotate(${rotation})` }}
@@ -12,13 +19,25 @@ const Sticker = ({ children, rotation = '3deg', color = 'bg-yellow-400', classNa
   </div>
 );
 
-const PillImage = ({ src, alt, className }) => (
-  <div className={`overflow-hidden border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] ${className}`}>
-    <img src={src} alt={alt} className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
-  </div>
-);
+// interface PillImageProps {
+//   src: string;
+//   alt: string;
+//   className?: string;
+// }
 
-const Marquee = ({ text, bg = "bg-emerald-500", textCol = "text-white" }) => (
+// const PillImage: React.FC<PillImageProps> = ({ src, alt, className }) => (
+//   <div className={`overflow-hidden border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] ${className}`}>
+//     <img src={src} alt={alt} className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
+//   </div>
+// );
+
+interface MarqueeProps {
+  text: string;
+  bg?: string;
+  textCol?: string;
+}
+
+const Marquee: React.FC<MarqueeProps> = ({ text, bg = "bg-emerald-500", textCol = "text-white" }) => (
   <div className={`py-4 border-y-2 border-black overflow-hidden ${bg} ${textCol}`}>
     <div className="flex gap-8 animate-marquee whitespace-nowrap">
       {[...Array(10)].map((_, i) => (
