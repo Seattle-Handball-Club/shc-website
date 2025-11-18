@@ -142,18 +142,44 @@ const App = () => {
            {/* Main Image - Arch Shape */}
            <div className="absolute inset-0 md:inset-12 bg-white border-2 border-black rounded-t-[15rem] shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
               <div className="w-full h-full bg-slate-100 relative">
-                 {/* Abstract Court */}
-                 <div className="absolute bottom-0 w-full h-1/3 bg-emerald-500 border-t-2 border-black"></div>
-                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-1/3 border-x-2 border-t-2 border-dashed border-white rounded-t-full"></div>
                  
-                 {/* Floating Elements (Simulated Parallax) */}
-                 <div className="absolute top-1/4 left-1/4 w-16 h-16 bg-orange-500 rounded-full border-2 border-black" style={{ transform: `translateY(${offsetY * -0.2}px)` }}></div>
-                 <div className="absolute top-1/3 right-1/4 w-8 h-8 bg-blue-600 border-2 border-black transform rotate-45" style={{ transform: `rotate(45deg) translateY(${offsetY * -0.1}px)` }}></div>
-                 
-                 <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="font-display text-9xl opacity-10 rotate-12">HANDBALL</span>
+                 {/* --- NEW HANDBALL COURT DRAWING --- */}
+                 <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8">
+                    <div className="w-full h-full relative border-black/20 border-b-2 border-x-2 rounded-t-lg">
+                      {/* Court Floor */}
+                      <div className="absolute bottom-0 w-full h-2/3 bg-emerald-600/30"></div>
+
+                      {/* 9m Line (dashed) */}
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[75%] h-[60%] border-4 border-black border-dashed rounded-t-full"></div>
+                      
+                      {/* 6m Line (solid) */}
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[45%] h-[35%] border-4 border-black bg-emerald-800/20 rounded-t-full"></div>
+                      
+                      {/* Goal Post */}
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-16 bg-white border-4 border-black flex items-center justify-center">
+                        <div className="w-full h-full border-4 border-red-500/50"></div>
+                      </div>
+
+                      {/* Players (Team 1 - Blue) */}
+                      <div className="absolute w-4 h-4 bg-blue-600 border-2 border-black rounded-full" style={{ bottom: '38%', left: '30%' }}></div>
+                      <div className="absolute w-4 h-4 bg-blue-600 border-2 border-black rounded-full" style={{ bottom: '38%', right: '30%' }}></div>
+                      <div className="absolute w-4 h-4 bg-blue-600 border-2 border-black rounded-full" style={{ bottom: '45%', left: '48%' }}></div>
+                      <div className="absolute w-4 h-4 bg-blue-600 border-2 border-black rounded-full" style={{ bottom: '20%', left: '35%' }}></div>
+                      <div className="absolute w-4 h-4 bg-blue-600 border-2 border-black rounded-full" style={{ bottom: '20%', right: '35%' }}></div>
+                      <div className="absolute w-4 h-4 bg-blue-600 border-2 border-black rounded-full" style={{ bottom: '15%', left: '48%' }}></div>
+                      <div className="absolute w-5 h-5 bg-blue-600 border-2 border-black rounded-full" style={{ bottom: '5%', left: '48%' }}></div> {/* Goalie */}
+                      
+                      {/* Players (Team 2 - Pink) */}
+                      <div className="absolute w-4 h-4 bg-pink-500 border-2 border-black rounded-full" style={{ bottom: '65%', left: '48%' }}></div>
+                      <div className="absolute w-4 h-4 bg-pink-500 border-2 border-black rounded-full" style={{ bottom: '55%', left: '35%' }}></div>
+                      <div className="absolute w-4 h-4 bg-pink-500 border-2 border-black rounded-full" style={{ bottom: '55%', right: '35%' }}></div>
+                      <div className="absolute w-4 h-4 bg-pink-500 border-2 border-black rounded-full" style={{ bottom: '70%', left: '25%' }}></div>
+                      <div className="absolute w-4 h-4 bg-pink-500 border-2 border-black rounded-full" style={{ bottom: '70%', right: '25%' }}></div>
+                      <div className="absolute w-4 h-4 bg-pink-500 border-2 border-black rounded-full" style={{ bottom: '80%', left: '48%' }}></div>
+                      <div className="absolute w-5 h-5 bg-pink-500 border-2 border-black rounded-full" style={{ bottom: '90%', left: '48%' }}></div> {/* Goalie */}
+                    </div>
                  </div>
-              </div>
+               </div>
            </div>
         </div>
       </header>
@@ -211,9 +237,8 @@ const App = () => {
 
          <div className="space-y-6">
             {[
-               { day: 'TUESDAY', time: '7:00 PM', loc: 'Loyal Heights', type: 'Social Scrimmage', color: 'bg-emerald-100' },
-               { day: 'THURSDAY', time: '7:30 PM', loc: 'Green Lake', type: 'Team Training', color: 'bg-pink-100' },
-               { day: 'SATURDAY', time: '10:00 AM', loc: 'Miller CC', type: 'Skills Clinic', color: 'bg-blue-100' },
+               { day: 'WEDNESDAY', time: '7:15 PM', loc: 'YMCA Shoreline', type: 'Team Training', color: 'bg-emerald-100' },
+               { day: 'SATURDAY', time: '03:00 PM', loc: 'Ballard Community Center', type: 'Tactics and skills training', color: 'bg-blue-100' },
             ].map((item, idx) => (
                <div key={idx} className={`group relative ${item.color} border-2 border-black p-6 md:p-8 rounded-2xl transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1`}>
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -256,21 +281,21 @@ const App = () => {
 
          <div className="max-w-4xl mx-auto bg-white border-2 border-black p-8 md:p-16 rounded-[3rem] text-center relative shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
             <div className="absolute -top-6 left-1/2 -translate-x-1/2">
-               <Sticker rotation="-2deg" color="bg-pink-500 text-white">First Month Free</Sticker>
+               <Sticker rotation="-2deg" color="bg-pink-500 text-white">Join our club!</Sticker>
             </div>
             
             <h2 className="font-display text-5xl md:text-7xl mb-6 mt-4">READY TO PLAY?</h2>
             <p className="text-xl font-bold text-slate-600 mb-12 max-w-xl mx-auto">
-               $40/month gets you unlimited practices, league games, and a pretty sweet jersey.
+               $400/season gets you unlimited practices
             </p>
 
             <div className="flex flex-col md:flex-row justify-center gap-6">
                <button className="bg-black text-white px-8 py-4 rounded-xl font-black text-xl border-2 border-black hover:bg-white hover:text-black transition-colors shadow-[4px_4px_0px_0px_rgba(16,185,129,1)]">
                   Sign Up Now
                </button>
-               <button className="bg-white text-black px-8 py-4 rounded-xl font-black text-xl border-2 border-black hover:bg-slate-50 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                  Drop In ($10)
-               </button>
+               {/* <button className="bg-white text-black px-8 py-4 rounded-xl font-black text-xl border-2 border-black hover:bg-slate-50 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+               </button> */}
+
             </div>
          </div>
       </section>
