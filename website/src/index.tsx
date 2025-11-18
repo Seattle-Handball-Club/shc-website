@@ -52,6 +52,7 @@ const Marquee: React.FC<MarqueeProps> = ({ text, bg = "bg-emerald-500", textCol 
 const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [offsetY, setOffsetY] = useState(0);
+  _ = offsetY; // Currently unused, but can be used for scroll-based effects
 
   useEffect(() => {
     const handleScroll = () => setOffsetY(window.scrollY);
