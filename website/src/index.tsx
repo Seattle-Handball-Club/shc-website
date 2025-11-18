@@ -65,7 +65,7 @@ const App = () => {
       `}</style>
 
       {/* --- HEADER --- */}
-      <nav className="fixed top-0 w-full z-50 px-4 py-4 md:px-8 md:py-6 flex justify-between items-start pointer-events-none">
+      <nav className="fixed top-0 w-full z-50 px-4 py-4 md:px-8 md:py-6 flex justify-between items-start">
         {/* Logo Blob */}
         <div className="pointer-events-auto relative group">
           <div className="absolute inset-0 bg-black rounded-full translate-x-1 translate-y-1 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform"></div>
@@ -132,44 +132,31 @@ const App = () => {
            <div className="absolute top-10 right-10 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
            <div className="absolute bottom-10 left-10 w-64 h-64 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style={{animationDelay: '1s'}}></div>
 
-           {/* Main Image - Arch Shape */}
-           <div className="absolute inset-0 md:inset-12 bg-white border-2 border-black rounded-t-[15rem] shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+           {/* Main Image - Rectangular Shape */}
+           <div className="absolute inset-0 md:inset-12 bg-white border-2 border-black rounded-3xl shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
               <div className="w-full h-full bg-slate-100 relative">
                  
                  {/* --- NEW HANDBALL COURT DRAWING --- */}
                  <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8">
-                    <div className="w-full h-full relative border-black/20 border-b-2 border-x-2 rounded-t-lg">
-                      {/* Court Floor */}
-                      <div className="absolute bottom-0 w-full h-2/3 bg-emerald-600/30"></div>
+                    <div className="w-full h-full relative border-2 border-black bg-[#4FB5E6] rounded-lg overflow-hidden">
+                      
+                      {/* Center Circle (Top) */}
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border-4 border-white rounded-full opacity-90"></div>
 
-                      {/* 9m Line (dashed) */}
-                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[75%] h-[60%] border-4 border-black border-dashed rounded-t-full"></div>
+                      {/* 9m Line (Dashed) */}
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[95%] h-[30%] border-4 border-white border-dashed rounded-t-full border-b-0 opacity-90"></div>
                       
-                      {/* 6m Line (solid) */}
-                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[45%] h-[35%] border-4 border-black bg-emerald-800/20 rounded-t-full"></div>
+                      {/* Goal Area (Purple + 6m Line) */}
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[74%] h-[22%] bg-[#2A2385] border-4 border-white rounded-t-full border-b-0 z-10"></div>
                       
+                      {/* 7m Line (Penalty) */}
+                      <div className="absolute bottom-[25%] left-1/2 -translate-x-1/2 w-12 h-1.5 bg-white z-20"></div>
+
+                      {/* 4m Line (Goalkeeper boundary) */}
+                      <div className="absolute bottom-[12%] left-1/2 -translate-x-1/2 w-8 h-1 bg-white/50 z-20"></div>
+
                       {/* Goal Post */}
-                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-16 bg-white border-4 border-black flex items-center justify-center">
-                        <div className="w-full h-full border-4 border-red-500/50"></div>
-                      </div>
-
-                      {/* Players (Team 1 - Blue) */}
-                      <div className="absolute w-4 h-4 bg-blue-600 border-2 border-black rounded-full" style={{ bottom: '38%', left: '30%' }}></div>
-                      <div className="absolute w-4 h-4 bg-blue-600 border-2 border-black rounded-full" style={{ bottom: '38%', right: '30%' }}></div>
-                      <div className="absolute w-4 h-4 bg-blue-600 border-2 border-black rounded-full" style={{ bottom: '45%', left: '48%' }}></div>
-                      <div className="absolute w-4 h-4 bg-blue-600 border-2 border-black rounded-full" style={{ bottom: '20%', left: '35%' }}></div>
-                      <div className="absolute w-4 h-4 bg-blue-600 border-2 border-black rounded-full" style={{ bottom: '20%', right: '35%' }}></div>
-                      <div className="absolute w-4 h-4 bg-blue-600 border-2 border-black rounded-full" style={{ bottom: '15%', left: '48%' }}></div>
-                      <div className="absolute w-5 h-5 bg-blue-600 border-2 border-black rounded-full" style={{ bottom: '5%', left: '48%' }}></div> {/* Goalie */}
-                      
-                      {/* Players (Team 2 - Pink) */}
-                      <div className="absolute w-4 h-4 bg-pink-500 border-2 border-black rounded-full" style={{ bottom: '65%', left: '48%' }}></div>
-                      <div className="absolute w-4 h-4 bg-pink-500 border-2 border-black rounded-full" style={{ bottom: '55%', left: '35%' }}></div>
-                      <div className="absolute w-4 h-4 bg-pink-500 border-2 border-black rounded-full" style={{ bottom: '55%', right: '35%' }}></div>
-                      <div className="absolute w-4 h-4 bg-pink-500 border-2 border-black rounded-full" style={{ bottom: '70%', left: '25%' }}></div>
-                      <div className="absolute w-4 h-4 bg-pink-500 border-2 border-black rounded-full" style={{ bottom: '70%', right: '25%' }}></div>
-                      <div className="absolute w-4 h-4 bg-pink-500 border-2 border-black rounded-full" style={{ bottom: '80%', left: '48%' }}></div>
-                      <div className="absolute w-5 h-5 bg-pink-500 border-2 border-black rounded-full" style={{ bottom: '90%', left: '48%' }}></div> {/* Goalie */}
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-6 border-x-4 border-t-4 border-white bg-white/20 z-30"></div>
                     </div>
                  </div>
                </div>
