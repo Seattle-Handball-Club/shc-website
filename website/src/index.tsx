@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Star, Calendar, MapPin, ArrowRight, Heart, Zap, Smile, Menu, X } from 'lucide-react';
 
 // --- Utility Components ---
@@ -51,14 +51,6 @@ const Marquee: React.FC<MarqueeProps> = ({ text, bg = "bg-emerald-500", textCol 
 
 const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [offsetY, setOffsetY] = useState(0);
-  _ = offsetY; // Currently unused, but can be used for scroll-based effects
-
-  useEffect(() => {
-    const handleScroll = () => setOffsetY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-black font-sans selection:bg-pink-400 overflow-x-hidden">
