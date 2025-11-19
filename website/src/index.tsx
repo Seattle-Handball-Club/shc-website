@@ -51,6 +51,52 @@ const Marquee: React.FC<MarqueeProps> = ({ text, bg = "bg-emerald-500", textCol 
 
 const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [tick, setTick] = useState(0);
+
+  React.useEffect(() => {
+    // Cycle 0-7: Passing, 8: Shot/Goal, 9-10: Celebration/Reset
+    const timer = setInterval(() => setTick(t => (t + 1) % 11), 600);
+    return () => clearInterval(timer);
+  }, []);
+
+  const players = [
+    { id: 'lw', label: 'Left Wing', x: 8, y: 10 },
+    { id: 'lb', label: 'Left Back', x: 25, y: 25 },
+    { id: 'cb', label: 'Center Back', x: 50, y: 29 },
+    { id: 'rb', label: 'Right Back', x: 75, y: 25 },
+    { id: 'rw', label: 'Right Wing', x: 92, y: 10 },
+    { id: 'pv', label: 'Pivot', x: 53, y: 20 },
+  ];
+
+  const ballSequence = [0, 1, 2, 3, 4, 3, 2, 5];
+  
+  const getPlayerOffset = (idx: number) => {
+    if (tick >= 8) return { x: 0, y: 0 }; // Reset positions during goal
+
+    const holder = ballSequence[tick];
+    const next = tick + 1 < ballSequence.length ? ballSequence[tick + 1] : -1;
+
+    if (idx === 5) { // Pivot Logic
+      if (idx === next || idx === holder) return { x: 5, y: 0 }; // Move sideways
+      return { x: 0, y: 0 };
+    }
+
+    // Other Players Logic
+    if (idx === holder) return { x: 0, y: -5 }; // With ball (Attack step)
+    if (idx === next) return { x: 0, y: -2 }; // About to receive (Anticipation step)
+
+    return { x: 0, y: 0 };
+  };
+
+  let ballStyle = {};
+  if (tick < 8) {
+    const holderIdx = ballSequence[tick];
+    const p = players[holderIdx];
+    const offset = getPlayerOffset(holderIdx);
+    ballStyle = { left: `${p.x + offset.x}%`, bottom: `${p.y + offset.y}%` };
+  } else {
+    ballStyle = { left: '50%', bottom: '2%' }; // Goal position
+  }
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-black font-sans selection:bg-pink-400 overflow-x-hidden">
@@ -59,7 +105,12 @@ const App = () => {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
+        @keyframes sway {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-25%); }
+        }
         .animate-marquee { animation: marquee 20s linear infinite; }
+        .animate-sway { animation: sway 1.5s ease-in-out infinite; }
         .font-display { font-family: 'Impact', 'Arial Black', sans-serif; }
         .clip-arch { clip-path: ellipse(100% 100% at 50% 100%); }
       `}</style>
@@ -157,6 +208,44 @@ const App = () => {
 
                       {/* Goal Post */}
                       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-6 border-x-4 border-t-4 border-white bg-white/20 z-30"></div>
+
+                      {/* --- ATTACKING TEAM & BALL --- */}
+                      {players.map((p, i) => {
+                        const offset = getPlayerOffset(i);
+                        const isPivot = i === 5;
+                        
+                        return (
+                          <div 
+                            key={p.id}
+                            className="absolute z-40 transition-all duration-500 ease-in-out"
+                            style={{ 
+                              left: `${p.x + offset.x}%`, 
+                              bottom: `${p.y + offset.y}%`,
+                              transform: 'translateX(-50%)'
+                            }}
+                          >
+                            <div 
+                              className={`w-4 h-4 bg-emerald-900 rounded-full border-2 border-white shadow-sm ${!isPivot ? 'animate-sway' : ''}`} 
+                              title={p.label}
+                            ></div>
+                          </div>
+                        );
+                      })}
+
+                      {/* Ball */}
+                      <div 
+                        className={`absolute w-2.5 h-2.5 bg-yellow-300 rounded-full border border-black z-50 shadow-sm transition-all duration-500 ease-in-out ${tick > 9 ? 'opacity-0' : 'opacity-100'}`}
+                        style={{
+                          ...ballStyle,
+                          transform: 'translateX(-50%)'
+                        }}
+                      ></div>
+                      
+                      {/* Goal Animation Text */}
+                      {tick >= 9 && tick <= 10 && (
+                         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 font-black text-white text-xl animate-bounce z-50 drop-shadow-md">GOAL!</div>
+                      )}
+
                     </div>
                  </div>
                </div>
