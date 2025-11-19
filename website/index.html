@@ -81,14 +81,14 @@
             
             /* SHOT (4.0s - 4.1s) - Jump Shot INTO zone (Pure Horizontal Translation) */
             51% { transform: translate(-30px, 0) scale(1.1); } /* Jump & Release (Directly forward) */
-            55% { transform: translate(-20px, 0); } /* Land */
-            65% { transform: translate(0, 0); } /* Reset */
+            /* 55% { transform: translate(-20px, 0); } Land */
+            /* 85% { transform: translate(0, 0); } Reset */
         }
         
         /* Goal Text - VISIBLE FOR 2 SECONDS */
         @keyframes goalTextSimple {
-            0%, 51% { opacity: 0; }
-            56% { opacity: 1; }           /* Appear right after shot (4.2s) */
+            0%, 60% { opacity: 0; }
+            65% { opacity: 1; }           /* Appear right after shot (4.2s) */
             77% { opacity: 1; }           /* Stay until 6.2s (Total 2s duration) */
             82% { opacity: 0; }           /* Fade out quickly */
             100% { opacity: 0; }
@@ -339,7 +339,7 @@
                                     repeatCount="indefinite"
                                     path="M 255 220 L 215 120 L 145 40 L 215 120 L 255 220 L 215 320 L 165 220 L 165 220 L 5 190 L 5 190"
                                     keyPoints="0;0.14;0.28;0.42;0.57;0.71;0.80;0.80;1;1"
-                                    keyTimes="0;0.0625;0.125;0.1875;0.25;0.3125;0.375;0.50;0.5125;1"
+                                    keyTimes="0;0.0625;0.125;0.1875;0.25;0.3125;0.343;0.42;0.4725;1"
                                     calcMode="linear"
                                 />
                                 <!-- Opacity: Visible -> Hide after goal -> Stay hidden -> Reset -->
