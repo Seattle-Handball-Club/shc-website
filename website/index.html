@@ -56,11 +56,11 @@
 
         /* Goalkeeper: REACTION SAVE - Synchronized with Shot */
         @keyframes goalieAction {
-            0%, 48% { transform: translate(0, 0); } /* Ready position */
+            0%, 51% { transform: translate(0, 0); } /* Ready position */
             
             /* Dive STARTS at 48% (3.8s) - Anticipating the shot released at 50% (4.0s) */
             /* Dive REACHES extension at 51% (4.08s) - Matching ball impact */
-            51% { transform: translate(25px, 35px); } 
+            53% { transform: translate(25px, 35px); } 
             
             /* STAY DOWN (Disappointed/Missed save) for 2 seconds */
             80% { transform: translate(25px, 35px); } 
@@ -88,7 +88,7 @@
         /* Goal Text - VISIBLE FOR 2 SECONDS */
         @keyframes goalTextSimple {
             0%, 51% { opacity: 0; }
-            52% { opacity: 1; }           /* Appear right after shot (4.2s) */
+            56% { opacity: 1; }           /* Appear right after shot (4.2s) */
             77% { opacity: 1; }           /* Stay until 6.2s (Total 2s duration) */
             82% { opacity: 0; }           /* Fade out quickly */
             100% { opacity: 0; }
@@ -143,6 +143,7 @@
                     <a href="#schedule" class="text-gray-300 hover:text-seattle-green transition-colors font-medium">Schedule</a>
                     <a href="#membership" class="text-gray-300 hover:text-seattle-green transition-colors font-medium">Membership</a>
                     <a href="#media" class="text-gray-300 hover:text-seattle-green transition-colors font-medium">Media</a>
+                    <a href="#gallery" class="text-gray-300 hover:text-seattle-green transition-colors font-medium">Gallery</a>
                     <a href="https://playpass.com/seattle-handball-club" target="_blank" class="bg-seattle-green hover:bg-seattle-darkGreen text-white px-5 py-2 rounded-full font-semibold transition-all transform hover:scale-105 shadow-md flex items-center gap-2">
                         Join Now <i data-lucide="external-link" class="w-4 h-4"></i>
                     </a>
@@ -165,6 +166,7 @@
                 <a href="#schedule" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Schedule</a>
                 <a href="#membership" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Membership</a>
                 <a href="#media" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Media</a>
+                <a href="#gallery" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Gallery</a>
                 <a href="https://playpass.com/seattle-handball-club" target="_blank" class="block px-3 py-2 rounded-md text-base font-medium text-seattle-green hover:text-white hover:bg-gray-800">Register Now</a>
             </div>
         </div>
@@ -472,7 +474,7 @@
                             1 Tournament Included
                         </li>
                     </ul>
-                    <a href="https://playpass.com/seattle-handball-club" target="_blank" class="block w-full py-3 rounded-lg border border-seattle-green text-seattle-green font-bold hover:bg-seattle-green hover:text-white transition-all text-center">
+                    <a href="https://playpass.com/seattle-handball-club/seattle-handball-club-2025-2026-season-AXhvJ2F" target="_blank" class="block w-full py-3 rounded-lg border border-seattle-green text-seattle-green font-bold hover:bg-seattle-green hover:text-white transition-all text-center">
                         Select Plan
                     </a>
                 </div>
@@ -502,7 +504,7 @@
                             2 Tournaments Included
                         </li>
                     </ul>
-                    <a href="https://playpass.com/seattle-handball-club" target="_blank" class="block w-full py-3 rounded-lg bg-seattle-green text-white font-bold hover:bg-seattle-darkGreen transition-all shadow-lg text-center">
+                    <a href="https://playpass.com/seattle-handball-club/seattle-handball-club-2025-2026-season-AXhvJ2F" target="_blank" class="block w-full py-3 rounded-lg bg-seattle-green text-white font-bold hover:bg-seattle-darkGreen transition-all shadow-lg text-center">
                         Join Full Season
                     </a>
                 </div>
@@ -519,25 +521,71 @@
             </div>
             
             <div class="grid md:grid-cols-2 gap-8">
-                 <div class="bg-white rounded-xl overflow-hidden shadow-md">
-                    <div class="bg-gray-200 h-64 flex items-center justify-center relative group cursor-pointer">
-                        <i data-lucide="play-circle" class="w-16 h-16 text-seattle-navy opacity-80 group-hover:scale-110 transition-transform"></i>
-                        <div class="absolute bottom-4 left-4 bg-black/50 text-white px-3 py-1 rounded text-sm font-medium">Highlights</div>
+                 <div class="bg-white rounded-xl overflow-hidden shadow-md group">
+                    <div class="w-full aspect-video relative">
+                        <iframe src="https://www.youtube.com/embed/MTs3rVaDR40" title="Seattle Handball Video 1" class="absolute inset-0 w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-bold text-lg mb-2 text-seattle-navy">Season Highlights</h3>
-                        <p class="text-gray-600 text-sm">Best goals and saves from the 2024 season.</p>
+                        <h3 class="font-bold text-lg mb-2 text-seattle-navy">Seattle Cup 2025: Seattle vs. Portland</h3>
+                        <p class="text-gray-600 text-sm">Highlights from our intense match against Portland at the 2025 Seattle Cup.</p>
                     </div>
                  </div>
                  
-                 <div class="bg-white rounded-xl overflow-hidden shadow-md">
-                    <div class="bg-gray-200 h-64 flex items-center justify-center relative group cursor-pointer">
-                        <i data-lucide="play-circle" class="w-16 h-16 text-seattle-navy opacity-80 group-hover:scale-110 transition-transform"></i>
-                        <div class="absolute bottom-4 left-4 bg-black/50 text-white px-3 py-1 rounded text-sm font-medium">Training</div>
+                 <div class="bg-white rounded-xl overflow-hidden shadow-md group">
+                    <div class="w-full aspect-video relative">
+                        <iframe src="https://www.youtube.com/embed/dVE7529ul5I" title="Seattle Handball Video 2" class="absolute inset-0 w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-bold text-lg mb-2 text-seattle-navy">Training Drills</h3>
-                        <p class="text-gray-600 text-sm">A look inside our weekly preparation and tactics.</p>
+                        <h3 class="font-bold text-lg mb-2 text-seattle-navy">Seattle vs. Vancouver Orcas</h3>
+                        <p class="text-gray-600 text-sm">Game 3 from the 2024 Vancouver Cup. Full match footage.</p>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-seattle-navy">Club Gallery</h2>
+                <p class="mt-2 text-slate-600">Moments from practice, tournaments, and team events.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                 <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3]">
+                    <img src="https://media.discordapp.net/attachments/1152756199150850120/1437513016974508113/IMG_5499.jpg?ex=691eb892&is=691d6712&hm=d65ed61761d4a41bc692773a2695c6e657c673670bfeb7d44a3b70f00540d6e7&=&format=webp&width=994&height=1325" alt="Team Huddle" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-semibold">Team Spirit</span>
+                    </div>
+                 </div>
+                 <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3]">
+                    <img src="https://media.discordapp.net/attachments/1152756199150850120/1251731956346126336/IMG_3934.jpg?ex=691e833a&is=691d31ba&hm=86338b6a7fb361f73b287ae82dbbee195e5dfb4c5c9e6984ccbd6c15f81d0f8e&=&format=webp&width=1766&height=1325" alt="Jump Shot" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-semibold">Social gatherings</span>
+                    </div>
+                 </div>
+                 <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3]">
+                    <img src="https://media.discordapp.net/attachments/1152756199150850120/1437513018136199249/IMG_5509.jpg?ex=691eb893&is=691d6713&hm=bdf78adc7a6b6e9d6a56d8da3d792039b34f752f0b4fa33ac4f5a58851861e7b&=&format=webp&width=994&height=1325" alt="Defense" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-semibold">Family and Friends</span>
+                    </div>
+                 </div>
+                 <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3]">
+                    <img src="https://lh3.googleusercontent.com/pw/AP1GczOgtwikhXNphsyzHFuZDR9Xl29v6hLUAHPwJG5zNPx8hA2ppv5DccNBVpRyQa2JqlhD5Po7M1X8ZWYdA9JXAJlxvyQZZOHNrzoJbZ_cMFXkk08IOlhCNdTnBcv37ko4VByuUnMhjr5n3h2JR2eD4xOYDA=w2984-h1378-s-no-gm?authuser=0" alt="Goal" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-semibold">Concentration</span>
+                    </div>
+                 </div>
+                 <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3]">
+                    <img src="https://albums.byben.photos/api/assets/ed7498c8-e52b-414a-829f-75d8fc638497/thumbnail?slug=Van-Hand-2025-All&size=preview&c=2PcFFYT5eFiQiXlsd3aHiYh%2Fgvg3" alt="Winners" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-semibold">Practice</span>
+                    </div>
+                 </div>
+                 <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3]">
+                    <img src="https://media.discordapp.net/attachments/1152756199150850120/1239224638932910242/IMG_1234.jpg?ex=691e7ea1&is=691d2d21&hm=336d22e7b131fe8f4f5901c905ef3ab7c89e40da6087e305d6f6e19bab135e2c&=&format=webp&width=1766&height=1325" alt="Training" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-semibold">Family & Friends</span>
                     </div>
                  </div>
             </div>
