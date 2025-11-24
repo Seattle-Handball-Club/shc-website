@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seattle Handball Club</title>
+    <meta name="description" content="Seattle Handball Club - Join Seattle's premier team handball community. Weekly practices, tournaments, and training for all skill levels in the Pacific Northwest.">
+    <meta name="keywords" content="handball, Seattle, team handball, sports club, Pacific Northwest, handball training">
+    <meta property="og:title" content="Seattle Handball Club">
+    <meta property="og:description" content="Join Seattle's premier team handball community. All skill levels welcome.">
+    <meta property="og:image" content="img/logo.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="img/logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
@@ -562,37 +569,37 @@
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                  <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3]">
-                    <img src="public/img/social.webp" alt="Team Huddle" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500">
+                    <img src="img/social.webp" alt="Team Huddle" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                         <span class="text-white font-semibold">Social gatherings</span>
                     </div>
                  </div>
                  <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3]">
-                    <img src="public/img/img2.jpg" alt="Social" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500">
+                    <img src="img/img2.jpg" alt="Social" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                         <span class="text-white font-semibold">Join the club!</span>
                     </div>
                  </div>
                  <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3]">
-                    <img src="public/img/img3.jpeg" alt="Defense" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500">
+                    <img src="img/img3.jpeg" alt="Defense" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                         <span class="text-white font-semibold">Family and Friends</span>
                     </div>
                  </div>
                  <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3]">
-                    <img src="public/img/old.webp" alt="Goal" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500">
+                    <img src="img/old.webp" alt="Goal" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                         <span class="text-white font-semibold">Playing together for many years</span>
                     </div>
                  </div>
                  <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3]">
-                    <img src="public/img/pract.jpg" alt="Winners" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500">
+                    <img src="img/pract.jpg" alt="Winners" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                         <span class="text-white font-semibold">Weekly practices</span>
                     </div>
                  </div>
                  <div class="relative group overflow-hidden rounded-lg shadow-md aspect-[4/3]">
-                    <img src="public/img/pic1.jpg" alt="Training" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500">
+                    <img src="img/pic1.jpg" alt="Training" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                         <span class="text-white font-semibold">Tournaments</span>
                     </div>
@@ -679,11 +686,14 @@
                         <a href="https://www.instagram.com/seattle_hc/" target="_blank" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition-colors">
                             <i data-lucide="instagram" class="w-5 h-5"></i>
                         </a>
+                        <a href="mailto:seattlehandballclub@gmail.com" target="_blank" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition-colors">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="pt-8 border-t border-slate-800 text-center text-gray-500 text-sm">
-                &copy; 2025 Seattle Handball Club. All rights reserved.
+                &copy; <span id="current-year"></span> Seattle Handball Club. All rights reserved.
             </div>
         </div>
     </footer>
@@ -706,6 +716,9 @@
                 nav.classList.add('bg-seattle-navy/95');
             }
         });
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
