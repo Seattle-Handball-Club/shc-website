@@ -43,13 +43,85 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
         }
         .hero-pattern {
             background-color: #0f172a;
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-pattern::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(125deg, rgba(16,185,129,0.15) 0%, transparent 40%, rgba(59,130,246,0.1) 70%, transparent 100%);
+            animation: heroGradientShift 8s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+        @keyframes heroGradientShift {
+            0% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+            100% { opacity: 0.6; transform: scale(1); }
+        }
+        @keyframes floatBlob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -20px) scale(1.05); }
+            66% { transform: translate(-20px, 15px) scale(0.95); }
+        }
+        .float-blob {
+            animation: floatBlob 12s ease-in-out infinite;
+        }
+        .float-blob-delay {
+            animation: floatBlob 15s ease-in-out infinite;
+            animation-delay: -5s;
+        }
+        /* Card hover lift effect */
+        .card-hover {
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15);
+        }
+        /* Shimmer effect for Best Value badge */
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        .shimmer-badge {
+            background: linear-gradient(110deg, #10b981 30%, #34d399 50%, #10b981 70%);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+        }
+        /* Gradient text effect */
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        /* Button glow on hover */
+        .btn-glow:hover {
+            box-shadow: 0 0 25px rgba(16,185,129,0.4), 0 0 50px rgba(16,185,129,0.15);
+        }
+        /* Section divider */
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #10b981, transparent);
+            opacity: 0.3;
+        }
+        /* Video card overlay */
+        .video-card:hover .video-overlay {
+            opacity: 1;
+        }
+        .video-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         /* Court Animation - Complex Choreography (8s Sequence) */
@@ -160,7 +232,7 @@
                     <a href="#membership" class="text-gray-300 hover:text-seattle-green transition-colors font-medium">Membership</a>
                     <a href="#media" class="text-gray-300 hover:text-seattle-green transition-colors font-medium">Media</a>
                     <a href="#gallery" class="text-gray-300 hover:text-seattle-green transition-colors font-medium">Gallery</a>
-                    <a href="https://playpass.com/seattle-handball-club" target="_blank" class="bg-seattle-green hover:bg-seattle-darkGreen text-white px-5 py-2 rounded-full font-semibold transition-all transform hover:scale-105 shadow-md flex items-center gap-2">
+                    <a href="https://playpass.com/seattle-handball-club" target="_blank" class="bg-seattle-green hover:bg-seattle-darkGreen text-white px-5 py-2.5 rounded-full font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg hover:shadow-seattle-green/25 flex items-center gap-2">
                         Join Now <i data-lucide="external-link" class="w-4 h-4"></i>
                     </a>
                 </div>
@@ -189,21 +261,25 @@
     </nav>
 
     <!-- Hero Section -->
-    <div class="hero-pattern relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <div class="hero-pattern relative pt-32 pb-24 lg:pt-48 lg:pb-36 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full text-sm text-gray-300 font-medium mb-8">
+                <span class="w-2 h-2 bg-seattle-green rounded-full animate-pulse"></span>
+                Now Recruiting for 2026 Season
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight">
                 Seattle's Premier <br>
-                <span class="text-seattle-green bg-clip-text">Team Handball Club</span>
+                <span class="gradient-text">Team Handball Club</span>
             </h1>
-            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-300 mb-10">
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-300/90 mb-12 leading-relaxed">
                 Join a community of passionate players. Competitive training, regional tournaments, and a friendly environment for all skill levels.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#schedule" class="bg-seattle-green text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-seattle-darkGreen transition-all shadow-lg flex items-center justify-center gap-2">
+                <a href="#schedule" class="bg-seattle-green text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-seattle-darkGreen transition-all shadow-lg btn-glow flex items-center justify-center gap-2 transform hover:scale-105">
                     <i data-lucide="calendar-days" class="w-5 h-5"></i>
                     See Practice Times
                 </a>
-                <a href="#membership" class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2">
+                <a href="#membership" class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2 transform hover:scale-105">
                     <i data-lucide="ticket" class="w-5 h-5"></i>
                     View Pricing
                 </a>
@@ -211,22 +287,25 @@
         </div>
         
         <!-- Abstract decorative shapes -->
-        <div class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-seattle-green/20 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 right-0 translate-x-1/3 translate-y-1/3 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
+        <div class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-seattle-green/20 rounded-full blur-3xl float-blob"></div>
+        <div class="absolute bottom-0 right-0 translate-x-1/3 translate-y-1/3 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-3xl float-blob-delay"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-3xl float-blob" style="animation-delay: -3s;"></div>
     </div>
 
     <!-- About / Welcome -->
-    <section id="about" class="py-20 bg-white">
+    <section id="about" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-seattle-navy">Welcome to the Club</h2>
-                <div class="w-24 h-1 bg-seattle-green mx-auto mt-4 rounded-full"></div>
+                <p class="text-seattle-green font-semibold uppercase tracking-widest text-sm mb-3">Why Handball?</p>
+                <h2 class="text-4xl font-extrabold text-seattle-navy">Welcome to the Club</h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-seattle-green to-cyan-400 mx-auto mt-5 rounded-full"></div>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="users" class="w-6 h-6"></i>
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm card-hover group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+                    <div class="w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="users" class="w-7 h-7"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">All Levels Welcome</h3>
                     <p class="text-slate-600 leading-relaxed">
@@ -234,9 +313,10 @@
                     </p>
                 </div>
 
-                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="swords" class="w-6 h-6"></i>
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm card-hover group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+                    <div class="w-14 h-14 bg-gradient-to-br from-emerald-100 to-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="swords" class="w-7 h-7"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">Competitive Play</h3>
                     <p class="text-slate-600 leading-relaxed">
@@ -244,9 +324,10 @@
                     </p>
                 </div>
 
-                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm card-hover group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-500 to-purple-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+                    <div class="w-14 h-14 bg-gradient-to-br from-indigo-100 to-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="heart-handshake" class="w-7 h-7"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">Community First</h3>
                     <p class="text-slate-600 leading-relaxed">
@@ -377,15 +458,17 @@
     </section>
 
     <!-- Schedule Section -->
-    <section id="schedule" class="py-20 bg-slate-50">
+    <div class="section-divider"></div>
+    <section id="schedule" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-14">
                 <div>
-                    <h2 class="text-3xl font-bold text-seattle-navy">Weekly Schedule</h2>
-                    <p class="mt-2 text-slate-600">Join us for our regular weekly training sessions.</p>
+                    <p class="text-seattle-green font-semibold uppercase tracking-widest text-sm mb-3">Training</p>
+                    <h2 class="text-4xl font-extrabold text-seattle-navy">Weekly Schedule</h2>
+                    <p class="mt-3 text-slate-500">Join us for our regular weekly training sessions.</p>
                 </div>
                 <div class="hidden md:block">
-                    <span class="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                    <span class="inline-flex items-center gap-2 px-5 py-2.5 bg-green-50 border border-green-200 text-green-700 rounded-full text-sm font-semibold">
                         <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                         Active Season
                     </span>
@@ -393,8 +476,8 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-6">
-                <!-- Wednesday Card - change to classes from text-seattle-green to text-seattle-navy when inactive -->
-                <div class="bg-white rounded-2xl shadow-lg border-l-8 border-seattle-green overflow-hidden group">
+                <!-- Wednesday Card -->
+                <div class="bg-white rounded-2xl shadow-md hover:shadow-xl border-l-8 border-seattle-green overflow-hidden group card-hover">
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-4">
                             <div class="bg-blue-50 text-seattle-green px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wide">
@@ -422,7 +505,7 @@
                 </div>
 
                 <!-- Saturday Card -->
-                <div class="bg-white rounded-2xl shadow-lg border-l-8 border-seattle-green overflow-hidden group">
+                <div class="bg-white rounded-2xl shadow-md hover:shadow-xl border-l-8 border-seattle-green overflow-hidden group card-hover">
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-4">
                             <div class="bg-emerald-50 text-seattle-green px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wide">
@@ -453,15 +536,17 @@
     </section>
 
     <!-- Membership Section -->
-    <section id="membership" class="py-20 bg-seattle-navy text-white relative overflow-hidden">
+    <section id="membership" class="py-24 bg-seattle-navy text-white relative overflow-hidden">
         <!-- Decorative BG -->
         <div class="absolute top-0 right-0 opacity-5">
             <i data-lucide="award" class="w-96 h-96"></i>
         </div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-seattle-green/10 rounded-full blur-3xl float-blob-delay"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold">Membership Options</h2>
+                <p class="text-seattle-green font-semibold uppercase tracking-widest text-sm mb-3">Pricing</p>
+                <h2 class="text-4xl font-extrabold">Membership Options</h2>
                 <p class="mt-4 text-gray-400 max-w-2xl mx-auto">
                     Support the club and get access to all training sessions, equipment, and club events.
                 </p>
@@ -497,8 +582,8 @@
 
                 <!-- Full Season -->
                 <div class="bg-gradient-to-b from-seattle-green/20 to-white/5 backdrop-blur-sm rounded-2xl p-8 border-2 border-seattle-green relative shadow-2xl transform md:-translate-y-4">
-                    <div class="absolute top-0 right-0 bg-seattle-green text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg uppercase">
-                        Best Value
+                    <div class="absolute top-0 right-0 shimmer-badge text-white text-xs font-bold px-4 py-1.5 rounded-bl-lg rounded-tr-2xl uppercase tracking-wide">
+                        ✨ Best Value
                     </div>
                     <h3 class="text-xl font-semibold text-white">Full Season</h3>
                     <div class="my-4 flex items-baseline">
@@ -529,11 +614,13 @@
     </section>
     
     <!-- Gallery Section -->
-    <section id="gallery" class="py-20 bg-white border-b border-slate-200">
+    <div class="section-divider"></div>
+    <section id="gallery" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-seattle-navy">Follow us on Instagram</h2>
-                <p class="mt-2 text-slate-600">Moments from practice, tournaments, and team events.</p>
+            <div class="text-center mb-14">
+                <p class="text-seattle-green font-semibold uppercase tracking-widest text-sm mb-3">Gallery</p>
+                <h2 class="text-4xl font-extrabold text-seattle-navy">Follow us on Instagram</h2>
+                <p class="mt-3 text-slate-500">Moments from practice, tournaments, and team events.</p>
             </div>
             
             <div class="w-full">
@@ -544,32 +631,34 @@
         </div>
     </section>
 
-    <!-- Video Section (New) -->
-    <section id="media" class="py-20 bg-slate-50 border-b border-slate-200">
+    <!-- Video Section -->
+    <div class="section-divider"></div>
+    <section id="media" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-seattle-navy">Club Media</h2>
-                <p class="mt-2 text-slate-600">Catch the action from our latest games and training.</p>
+            <div class="text-center mb-14">
+                <p class="text-seattle-green font-semibold uppercase tracking-widest text-sm mb-3">Watch</p>
+                <h2 class="text-4xl font-extrabold text-seattle-navy">Club Media</h2>
+                <p class="mt-3 text-slate-500">Catch the action from our latest games and training.</p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-8">
-                 <div class="bg-white rounded-xl overflow-hidden shadow-md group">
+                 <div class="bg-white rounded-2xl overflow-hidden shadow-md card-hover group border border-slate-100">
                     <div class="w-full aspect-video relative">
                         <iframe src="https://www.youtube.com/embed/MTs3rVaDR40" title="Seattle Handball Video 1" class="absolute inset-0 w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-bold text-lg mb-2 text-seattle-navy">Seattle Cup 2025: Seattle vs. Portland</h3>
-                        <p class="text-gray-600 text-sm">Highlights from our intense match against Portland at the 2025 Seattle Cup.</p>
+                        <h3 class="font-bold text-lg mb-2 text-seattle-navy group-hover:text-seattle-green transition-colors">Seattle Cup 2025: Seattle vs. Portland</h3>
+                        <p class="text-gray-500 text-sm">Highlights from our intense match against Portland at the 2025 Seattle Cup.</p>
                     </div>
                  </div>
                  
-                 <div class="bg-white rounded-xl overflow-hidden shadow-md group">
+                 <div class="bg-white rounded-2xl overflow-hidden shadow-md card-hover group border border-slate-100">
                     <div class="w-full aspect-video relative">
                         <iframe src="https://www.youtube.com/embed/dVE7529ul5I" title="Seattle Handball Video 2" class="absolute inset-0 w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-bold text-lg mb-2 text-seattle-navy">Seattle vs. Vancouver Orcas</h3>
-                        <p class="text-gray-600 text-sm">Game 3 from the 2024 Vancouver Cup. Full match footage.</p>
+                        <h3 class="font-bold text-lg mb-2 text-seattle-navy group-hover:text-seattle-green transition-colors">Seattle vs. Vancouver Orcas</h3>
+                        <p class="text-gray-500 text-sm">Game 3 from the 2024 Vancouver Cup. Full match footage.</p>
                     </div>
                  </div>
             </div>
@@ -577,46 +666,154 @@
     </section>
 
     <!-- Events Section -->
-    <section id="events" class="py-20 bg-white">
+    <div class="section-divider"></div>
+    <section id="events" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-16">
                 <!-- Upcoming Events -->
                 <div>
                     <div class="mb-8 border-l-4 border-seattle-green pl-6">
-                        <h2 class="text-3xl font-bold text-seattle-navy">Upcoming Events</h2>
+                        <p class="text-seattle-green font-semibold uppercase tracking-widest text-sm mb-1">What's Next</p>
+                        <h2 class="text-3xl font-extrabold text-seattle-navy">Upcoming Events</h2>
                     </div>
-                    <div class="bg-slate-50 rounded-2xl p-10 border border-slate-200 text-center">
-                        <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-seattle-navy rounded-full mb-4">
-                            <i data-lucide="calendar-clock" class="w-8 h-8"></i>
+
+                    <div class="space-y-4">
+                        <!-- Seattle Handball Cup (Confirmed) -->
+                        <div class="bg-white rounded-2xl p-6 border-2 border-seattle-green shadow-md card-hover relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-seattle-green text-white text-xs font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wide flex items-center gap-1">
+                                <i data-lucide="check-circle" class="w-3 h-3"></i> Confirmed
+                            </div>
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="bg-emerald-50 text-seattle-green p-3 rounded-xl text-center min-w-[80px] border border-emerald-200">
+                                    <span class="block text-xs font-bold">APR 2026</span>
+                                    <span class="block text-2xl font-extrabold">3–5</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-seattle-navy">Seattle Handball Cup</h3>
+                                    <p class="text-sm text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Everett, WA</p>
+                                </div>
+                            </div>
+                            <p class="text-slate-600 text-sm">
+                                Our home tournament is back! Teams from across the region compete in what's becoming a PNW handball tradition.
+                            </p>
                         </div>
-                        <h3 class="text-xl font-bold text-seattle-navy mb-2">Stay Tuned!</h3>
-                        <p class="text-slate-600">
-                            We are currently planning our next tournament schedule. Check back soon for updates on upcoming matches and social events.
-                        </p>
+
+                        <!-- On Our Radar (Unconfirmed) -->
+                        <div class="mt-6">
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                                <i data-lucide="radar" class="w-4 h-4"></i> On Our Radar
+                            </p>
+                            <div class="space-y-3">
+                                <!-- US Nationals -->
+                                <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 flex items-center gap-4 hover:bg-slate-100 transition-colors">
+                                    <div class="text-2xl flex-shrink-0">🇺🇸</div>
+                                    <div class="flex-grow">
+                                        <h4 class="text-sm font-bold text-seattle-navy">US Nationals</h4>
+                                        <p class="text-xs text-slate-500">May 14–17 · Bettendorf, IA</p>
+                                    </div>
+                                    <span class="flex-shrink-0 px-2.5 py-1 bg-amber-50 text-amber-600 text-xs font-bold rounded-full border border-amber-200">TBD</span>
+                                </div>
+
+                                <!-- Canadian Nationals -->
+                                <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 flex items-center gap-4 hover:bg-slate-100 transition-colors">
+                                    <div class="text-2xl flex-shrink-0">🇨🇦</div>
+                                    <div class="flex-grow">
+                                        <h4 class="text-sm font-bold text-seattle-navy">Canadian Nationals</h4>
+                                        <p class="text-xs text-slate-500">May 22–24 · Edmonton, AB</p>
+                                    </div>
+                                    <span class="flex-shrink-0 px-2.5 py-1 bg-amber-50 text-amber-600 text-xs font-bold rounded-full border border-amber-200">TBD</span>
+                                </div>
+
+                                <!-- World Series -->
+                                <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 flex items-center gap-4 hover:bg-slate-100 transition-colors">
+                                    <div class="text-2xl flex-shrink-0">🌎</div>
+                                    <div class="flex-grow">
+                                        <h4 class="text-sm font-bold text-seattle-navy">World Series</h4>
+                                        <p class="text-xs text-slate-500">Aug 5–9 · Las Vegas, NV</p>
+                                    </div>
+                                    <span class="flex-shrink-0 px-2.5 py-1 bg-amber-50 text-amber-600 text-xs font-bold rounded-full border border-amber-200">TBD</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Past Events -->
                 <div>
                     <div class="mb-8 border-l-4 border-gray-300 pl-6">
-                        <h2 class="text-3xl font-bold text-gray-400">Past Events</h2>
+                        <p class="text-slate-400 font-semibold uppercase tracking-widest text-sm mb-1">Results</p>
+                        <h2 class="text-3xl font-extrabold text-gray-400">Past Events</h2>
                     </div>
                     
-                    <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm opacity-75 hover:opacity-100 transition-opacity">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div class="bg-gray-100 text-gray-600 p-3 rounded-lg text-center min-w-[80px]">
-                                <span class="block text-xs font-bold">MAR 2025</span>
-                                <span class="block text-2xl font-bold">28</span>
+                    <div class="space-y-4">
+                        <!-- CalCup 2026 -->
+                        <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm opacity-80 hover:opacity-100 transition-all card-hover">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="bg-gray-100 text-gray-600 p-3 rounded-xl text-center min-w-[80px]">
+                                    <span class="block text-xs font-bold">JAN 2026</span>
+                                    <span class="block text-2xl font-extrabold">30</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-seattle-navy">CalCup 2026 (19th Edition)</h3>
+                                    <p class="text-sm text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Centerville Jr. High, Fremont, CA</p>
+                                </div>
                             </div>
-                            <div>
-                                <h3 class="text-lg font-bold text-seattle-navy">Seattle Cup 2025</h3>
-                                <p class="text-sm text-slate-500">Everett Community College</p>
+                            <p class="text-slate-600 text-sm mb-4">
+                                Seattle competed at the 19th annual California Cup, one of the largest handball tournaments on the West Coast.
+                            </p>
+                            <div class="flex items-center gap-3">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-full border border-blue-200">
+                                    <i data-lucide="medal" class="w-3 h-3"></i> 6th Place
+                                </span>
+                                <span class="inline-block px-3 py-1 bg-gray-100 text-gray-500 text-xs font-bold rounded-full uppercase">Completed</span>
                             </div>
                         </div>
-                        <p class="text-slate-600 text-sm mb-4">
-                            The inaugural Team Handball Tournament in Seattle! Teams from across the region competed in Men's & Women's divisions.
-                        </p>
-                         <span class="inline-block px-3 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded-full uppercase">Completed</span>
+
+                        <!-- Vancouver Cup 2025 -->
+                        <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm opacity-80 hover:opacity-100 transition-all card-hover">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="bg-gray-100 text-gray-600 p-3 rounded-xl text-center min-w-[80px]">
+                                    <span class="block text-xs font-bold">NOV 2025</span>
+                                    <span class="block text-2xl font-extrabold">8–9</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-seattle-navy">6th Vancouver Cup</h3>
+                                    <p class="text-sm text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Richmond Oval, Vancouver, BC</p>
+                                </div>
+                            </div>
+                            <p class="text-slate-600 text-sm mb-4">
+                                A strong showing for Seattle at the 6th edition of the Vancouver Cup, battling top Canadian and PNW clubs.
+                            </p>
+                            <div class="flex items-center gap-3">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-50 text-amber-700 text-xs font-bold rounded-full border border-amber-200">
+                                    <i data-lucide="medal" class="w-3 h-3"></i> 🥈 2nd Place
+                                </span>
+                                <span class="inline-block px-3 py-1 bg-gray-100 text-gray-500 text-xs font-bold rounded-full uppercase">Completed</span>
+                            </div>
+                        </div>
+
+                        <!-- Seattle Cup 2025 -->
+                        <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm opacity-80 hover:opacity-100 transition-all card-hover">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="bg-gray-100 text-gray-600 p-3 rounded-xl text-center min-w-[80px]">
+                                    <span class="block text-xs font-bold">MAR 2025</span>
+                                    <span class="block text-2xl font-extrabold">28</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-seattle-navy">Seattle Cup 2025</h3>
+                                    <p class="text-sm text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Everett Community College</p>
+                                </div>
+                            </div>
+                            <p class="text-slate-600 text-sm mb-4">
+                                The inaugural Team Handball Tournament in Seattle! Teams from across the region competed in Men's & Women's divisions.
+                            </p>
+                            <div class="flex items-center gap-3">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-orange-50 text-orange-700 text-xs font-bold rounded-full border border-orange-200">
+                                    <i data-lucide="medal" class="w-3 h-3"></i> 🥉 3rd Place
+                                </span>
+                                <span class="inline-block px-3 py-1 bg-gray-100 text-gray-500 text-xs font-bold rounded-full uppercase">Completed</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -624,44 +821,52 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-12 border-t border-slate-800">
+    <footer class="bg-slate-900 text-white pt-16 pb-10 relative">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-seattle-green via-cyan-400 to-blue-500"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
+            <div class="grid md:grid-cols-4 gap-10 mb-12">
                 <div class="col-span-1 md:col-span-2">
-                    <div class="flex items-center gap-2 mb-4">
-                        <i data-lucide="trophy" class="text-seattle-green"></i>
-                        <span class="text-xl font-bold">Seattle Handball Club</span>
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="bg-seattle-green p-2 rounded-lg">
+                            <i data-lucide="trophy" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold tracking-tight">Seattle Handball Club</span>
                     </div>
-                    <p class="text-gray-400 max-w-sm">
+                    <p class="text-gray-400 max-w-sm leading-relaxed">
                         Building the handball community in the Pacific Northwest. Join us on the court!
                     </p>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4 text-seattle-green">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white">Home</a></li>
-                        <li><a href="#about" class="hover:text-white">About</a></li>
-                        <li><a href="#schedule" class="hover:text-white">Schedule</a></li>
-                        <li><a href="https://playpass.com/seattle-handball-club" target="_blank" class="hover:text-white">Playpass Page</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4 text-seattle-green">Connect</h4>
-                    <div class="flex space-x-4">
-                        <a href="http://www.facebook.com/SeattleHC" target="_blank" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                    <div class="flex space-x-3 mt-6">
+                        <a href="http://www.facebook.com/SeattleHC" target="_blank" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-all hover:scale-110">
                             <i data-lucide="facebook" class="w-5 h-5"></i>
                         </a>
-                        <a href="https://www.instagram.com/seattle_hc/" target="_blank" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition-colors">
+                        <a href="https://www.instagram.com/seattle_hc/" target="_blank" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-500 transition-all hover:scale-110">
                             <i data-lucide="instagram" class="w-5 h-5"></i>
                         </a>
-                        <a href="mailto:seattlehandballclub@gmail.com" target="_blank" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition-colors">
+                        <a href="mailto:seattlehandballclub@gmail.com" target="_blank" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-seattle-green transition-all hover:scale-110">
                             <i data-lucide="mail" class="w-5 h-5"></i>
                         </a>
                     </div>
                 </div>
+                <div>
+                    <h4 class="font-bold mb-5 text-white text-sm uppercase tracking-widest">Quick Links</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-seattle-green transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-seattle-green transition-colors">About</a></li>
+                        <li><a href="#schedule" class="hover:text-seattle-green transition-colors">Schedule</a></li>
+                        <li><a href="https://playpass.com/seattle-handball-club" target="_blank" class="hover:text-seattle-green transition-colors">Playpass Page</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-5 text-white text-sm uppercase tracking-widest">Contact</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-seattle-green"></i> seattlehandballclub@gmail.com</li>
+                        <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-seattle-green"></i> Seattle, WA</li>
+                    </ul>
+                </div>
             </div>
-            <div class="pt-8 border-t border-slate-800 text-center text-gray-500 text-sm">
-                &copy; <span id="current-year"></span> Seattle Handball Club. All rights reserved.
+            <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+                <span>&copy; <span id="current-year"></span> Seattle Handball Club. All rights reserved.</span>
+                <span class="mt-3 md:mt-0 flex items-center gap-1">Made with <i data-lucide="heart" class="w-3.5 h-3.5 text-red-500"></i> in Seattle</span>
             </div>
         </div>
     </footer>
