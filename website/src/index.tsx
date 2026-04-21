@@ -37,6 +37,15 @@ interface MarqueeProps {
   textCol?: string;
 }
 
+interface ScheduleItem {
+  day: string;
+  time: string;
+  loc: string;
+  type: string;
+  color: string;
+  notice?: string | React.ReactNode;
+}
+
 const Marquee: React.FC<MarqueeProps> = ({ text, bg = "bg-emerald-500", textCol = "text-white" }) => (
   <div className={`py-4 border-y-2 border-black overflow-hidden ${bg} ${textCol}`}>
     <div className="flex gap-8 animate-marquee whitespace-nowrap">
@@ -52,6 +61,10 @@ const Marquee: React.FC<MarqueeProps> = ({ text, bg = "bg-emerald-500", textCol 
 const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [tick, setTick] = useState(0);
+  const scheduleItems: ScheduleItem[] = [
+    { day: 'WEDNESDAY', time: '7:15 PM', loc: 'YMCA Shoreline', type: 'Team Training', color: 'bg-emerald-100' },
+    { day: 'SATURDAY', time: '03:00 PM', loc: 'Ballard Community Center', type: 'Tactics and skills training', color: 'bg-blue-100' },
+  ];
 
   React.useEffect(() => {
     // Cycle 0-7: Passing, 8: Shot/Goal, 9-10: Celebration/Reset
@@ -305,10 +318,7 @@ const App = () => {
          </div>
 
          <div className="space-y-6">
-            {[
-               { day: 'WEDNESDAY', time: '7:15 PM', loc: 'YMCA Shoreline', type: 'Team Training', color: 'bg-emerald-100' },
-               { day: 'SATURDAY', time: '03:00 PM', loc: 'Ballard Community Center', type: 'Tactics and skills training', color: 'bg-blue-100' },
-            ].map((item, idx) => (
+            {scheduleItems.map((item, idx) => (
                <div key={idx} className={`group relative ${item.color} border-2 border-black p-6 md:p-8 rounded-2xl transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1`}>
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                      <div className="flex items-center gap-4">
@@ -336,7 +346,7 @@ const App = () => {
                         </div>
                      </div>
                   </div>
-                  {'notice' in item && item.notice && (
+                  {item.notice && (
                      <div className="mt-4 bg-amber-100 border-2 border-amber-400 text-amber-900 rounded-lg px-4 py-3 text-sm font-bold">
                         {item.notice}
                      </div>
@@ -414,4 +424,3 @@ const App = () => {
 };
 
 export default App;
-
