@@ -46,6 +46,11 @@ interface ScheduleItem {
   notice?: string | React.ReactNode;
 }
 
+const scheduleItems: ScheduleItem[] = [
+  { day: 'WEDNESDAY', time: '7:15 PM', loc: 'YMCA Shoreline', type: 'Team Training', color: 'bg-emerald-100' },
+  { day: 'SATURDAY', time: '03:00 PM', loc: 'Ballard Community Center', type: 'Tactics and skills training', color: 'bg-blue-100' },
+];
+
 const Marquee: React.FC<MarqueeProps> = ({ text, bg = "bg-emerald-500", textCol = "text-white" }) => (
   <div className={`py-4 border-y-2 border-black overflow-hidden ${bg} ${textCol}`}>
     <div className="flex gap-8 animate-marquee whitespace-nowrap">
@@ -61,10 +66,6 @@ const Marquee: React.FC<MarqueeProps> = ({ text, bg = "bg-emerald-500", textCol 
 const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [tick, setTick] = useState(0);
-  const scheduleItems: ScheduleItem[] = [
-    { day: 'WEDNESDAY', time: '7:15 PM', loc: 'YMCA Shoreline', type: 'Team Training', color: 'bg-emerald-100' },
-    { day: 'SATURDAY', time: '03:00 PM', loc: 'Ballard Community Center', type: 'Tactics and skills training', color: 'bg-blue-100' },
-  ];
 
   React.useEffect(() => {
     // Cycle 0-7: Passing, 8: Shot/Goal, 9-10: Celebration/Reset
