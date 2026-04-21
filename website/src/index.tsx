@@ -307,7 +307,7 @@ const App = () => {
          <div className="space-y-6">
             {[
                { day: 'WEDNESDAY', time: '7:15 PM', loc: 'YMCA Shoreline', type: 'Team Training', color: 'bg-emerald-100' },
-               { day: 'SATURDAY', time: '03:00 PM', loc: 'Ballard Community Center', type: 'Tactics and skills training', color: 'bg-blue-100', notice: '⚠️ No practice on April 11 & April 18 — Ballard is closed' },
+               { day: 'SATURDAY', time: '03:00 PM', loc: 'Ballard Community Center', type: 'Tactics and skills training', color: 'bg-blue-100' },
             ].map((item, idx) => (
                <div key={idx} className={`group relative ${item.color} border-2 border-black p-6 md:p-8 rounded-2xl transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1`}>
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
