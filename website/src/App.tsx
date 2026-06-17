@@ -108,16 +108,10 @@ const mediaItems = [
 
 const upcomingEvents = [
   {
-    label: 'Canadian Nationals',
-    date: 'May 22-24',
-    place: 'Edmonton, AB',
-    status: 'TBD',
-  },
-  {
     label: 'World Series',
     date: 'Aug 5-9',
     place: 'Las Vegas, NV',
-    status: 'TBD',
+    status: 'Confirmed',
   },
 ]
 
@@ -214,12 +208,6 @@ const faqItems = [
       </>
     ),
   },
-]
-
-const galleryImages = [
-  { src: '/img/pract.jpg', alt: 'Seattle Handball Club practice circle in the gym' },
-  { src: '/img/pic1.jpg', alt: 'Seattle Handball Club player taking a shot during a match' },
-  { src: '/img/social.webp', alt: 'Seattle Handball Club members at a social event' },
 ]
 
 function CourtAnimation() {
@@ -459,14 +447,9 @@ function App() {
 
         <section id="gallery" className="section section-light">
           <div className="section-heading">
-            <p className="eyebrow">Gallery</p>
+            <p className="eyebrow">Instagram</p>
             <h2>Follow us on Instagram</h2>
-            <p>Moments from practice, tournaments, and team events.</p>
-          </div>
-          <div className="gallery-grid" aria-label="Club photo gallery">
-            {galleryImages.map((image) => (
-              <img key={image.src} src={image.src} alt={image.alt} />
-            ))}
+            <p>Recent posts from practice, tournaments, and team events.</p>
           </div>
           <div className="instagram-widget" aria-label="Instagram feed">
             <div className="elfsight-app-ab6f5b82-e4ed-434e-9c60-05cde62d1840" data-elfsight-app-lazy />
