@@ -37,6 +37,9 @@
 .hero-actions,
 .button,
 .hero-note,
+.callout-label,
+.new-player-actions,
+.callout-link,
 .legend-list span,
 .info-line,
 .text-link,
@@ -273,6 +276,82 @@
   border-radius: 999px;
   font-size: 0.86rem;
   font-weight: 800;
+}
+
+.new-player-callout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  padding: 22px max(24px, calc((100% - 1180px) / 2));
+  color: #10201d;
+  background:
+    linear-gradient(90deg, rgba(240, 196, 77, 0.95), rgba(250, 221, 124, 0.92)),
+    linear-gradient(135deg, #f0c44d, #f4d676 58%, #e7a846);
+  border-top: 1px solid rgba(16, 32, 29, 0.12);
+  border-bottom: 1px solid rgba(16, 32, 29, 0.12);
+}
+
+.callout-label {
+  gap: 8px;
+  width: fit-content;
+  margin-bottom: 6px;
+  color: #045244;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.callout-label svg {
+  color: #cf4e3c;
+}
+
+.new-player-copy h2 {
+  max-width: 720px;
+  margin: 0;
+  color: #10201d;
+  font-size: clamp(1.65rem, 3vw, 2.65rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.new-player-copy p {
+  max-width: 760px;
+  margin: 8px 0 0;
+  color: rgba(16, 32, 29, 0.74);
+  font-size: 1.04rem;
+  font-weight: 750;
+}
+
+.new-player-actions {
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.new-player-callout .button-primary {
+  color: #ffffff;
+  background: #10201d;
+  box-shadow: 0 16px 32px rgba(16, 32, 29, 0.24);
+}
+
+.callout-link {
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 16px;
+  color: #10201d;
+  background: rgba(255, 255, 255, 0.34);
+  border: 1px solid rgba(16, 32, 29, 0.18);
+  border-radius: 8px;
+  font-weight: 900;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.callout-link:hover {
+  background: rgba(255, 255, 255, 0.48);
+  transform: translateY(-2px);
 }
 
 .section {
@@ -1104,6 +1183,15 @@
     margin-top: 36px;
   }
 
+  .new-player-callout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .new-player-actions {
+    justify-content: flex-start;
+  }
+
   .section {
     padding-top: 72px;
     padding-bottom: 72px;
@@ -1188,8 +1276,41 @@
   }
 
   .hero-actions,
-  .button {
+  .button,
+  .new-player-actions,
+  .callout-link {
     width: 100%;
+  }
+
+  .new-player-callout {
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .new-player-copy h2 {
+    font-size: clamp(1.45rem, 6.2vw, 1.9rem);
+  }
+
+  .new-player-copy p {
+    display: none;
+  }
+
+  .new-player-callout .button {
+    min-height: 44px;
+  }
+
+  .new-player-callout .new-player-actions {
+    gap: 6px;
+  }
+
+  .new-player-callout .callout-link {
+    min-height: 28px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    justify-content: flex-start;
   }
 
   .section,

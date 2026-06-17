@@ -345,6 +345,24 @@ function App() {
           </aside>
         </header>
 
+        <section className="new-player-callout" aria-labelledby="new-player-heading">
+          <div className="new-player-copy">
+            <span className="callout-label">
+              <HeartHandshake size={18} aria-hidden="true" /> New players welcome
+            </span>
+            <h2 id="new-player-heading">First two practices are free.</h2>
+            <p>No membership needed. Bring indoor court shoes, meet the team, and try a friendly training session.</p>
+          </div>
+          <div className="new-player-actions">
+            <a className="button button-primary" href="#schedule">
+              <CalendarDays size={20} aria-hidden="true" /> Pick a Practice
+            </a>
+            <a className="callout-link" href="mailto:seattlehandballclub@gmail.com?subject=New%20player%20practice">
+              Ask a Question <Mail size={18} aria-hidden="true" />
+            </a>
+          </div>
+        </section>
+
         <section id="about" className="section section-light">
           <div className="section-heading">
             <p className="eyebrow">Why Handball?</p>
