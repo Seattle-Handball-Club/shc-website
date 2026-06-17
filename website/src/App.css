@@ -154,23 +154,25 @@
 }
 
 .hero-bg {
-  width: 100%;
+  left: 45%;
+  right: 0;
+  width: auto;
   height: 100%;
   object-fit: cover;
-  object-position: center 34%;
+  object-position: center 36%;
   filter: saturate(0.96) contrast(1.05);
 }
 
 .hero-shade {
   background:
-    linear-gradient(90deg, rgba(8, 22, 20, 0.96) 0%, rgba(8, 22, 20, 0.79) 42%, rgba(8, 22, 20, 0.28) 72%, rgba(8, 22, 20, 0.58) 100%),
+    linear-gradient(90deg, rgba(8, 22, 20, 0.98) 0%, rgba(8, 22, 20, 0.9) 38%, rgba(8, 22, 20, 0.38) 64%, rgba(8, 22, 20, 0.2) 100%),
     linear-gradient(0deg, rgba(8, 22, 20, 0.82) 0%, rgba(8, 22, 20, 0) 46%);
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  width: min(760px, 100%);
+  width: min(600px, 44vw);
 }
 
 .eyebrow {
@@ -201,14 +203,14 @@
 }
 
 .hero-section h1 {
-  max-width: 790px;
-  font-size: clamp(3.4rem, 10vw, 8rem);
-  line-height: 0.9;
+  max-width: 520px;
+  font-size: clamp(3.1rem, 6.2vw, 5.7rem);
+  line-height: 0.92;
   text-wrap: balance;
 }
 
 .hero-copy {
-  max-width: 650px;
+  max-width: 500px;
   margin: 26px 0 0;
   color: rgba(255, 255, 255, 0.84);
   font-size: clamp(1.08rem, 2.1vw, 1.35rem);
@@ -1074,6 +1076,26 @@
     min-height: 86svh;
   }
 
+  .hero-bg {
+    left: 54%;
+    object-position: left 38%;
+  }
+
+  .hero-shade {
+    background:
+      linear-gradient(90deg, rgba(8, 22, 20, 0.98) 0%, rgba(8, 22, 20, 0.84) 55%, rgba(8, 22, 20, 0.3) 100%),
+      linear-gradient(0deg, rgba(8, 22, 20, 0.82) 0%, rgba(8, 22, 20, 0) 48%);
+  }
+
+  .hero-content {
+    width: min(430px, 48vw);
+  }
+
+  .hero-section h1 {
+    max-width: 430px;
+    font-size: clamp(2.9rem, 7.4vw, 4.6rem);
+  }
+
   .hero-note {
     position: relative;
     right: auto;
@@ -1140,8 +1162,29 @@
     padding-right: 18px;
   }
 
+  .hero-bg {
+    left: 62%;
+    object-position: left 40%;
+    opacity: 0.64;
+  }
+
   .hero-shade {
-    background: linear-gradient(90deg, rgba(8, 22, 20, 0.95), rgba(8, 22, 20, 0.72));
+    background:
+      linear-gradient(90deg, rgba(8, 22, 20, 0.98) 0%, rgba(8, 22, 20, 0.9) 60%, rgba(8, 22, 20, 0.42) 100%),
+      linear-gradient(0deg, rgba(8, 22, 20, 0.82) 0%, rgba(8, 22, 20, 0) 50%);
+  }
+
+  .hero-content {
+    width: min(300px, 100%);
+  }
+
+  .hero-section h1 {
+    max-width: 300px;
+    font-size: clamp(2.65rem, 11vw, 3.6rem);
+  }
+
+  .hero-copy {
+    max-width: 300px;
   }
 
   .hero-actions,
