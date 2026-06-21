@@ -66,7 +66,7 @@ const scheduleItems = [
   {
     day: 'Saturday',
     title: 'Tactics & Skills',
-    time: '3:00 PM - 5:00 PM',
+    time: '10:00 AM - 12:00 PM',
     location: 'Ballard Community Center, 6020 28th Ave NW, Seattle, WA 98107',
     directions: 'https://maps.google.com/?q=Ballard+Community+Center+6020+28th+Ave+NW+Seattle+WA+98107',
   },
