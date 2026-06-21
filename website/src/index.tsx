@@ -47,7 +47,7 @@ interface ScheduleItem {
 }
 
 const scheduleItems: ScheduleItem[] = [
-  { day: 'WEDNESDAY', time: '7:15 PM', loc: 'YMCA Shoreline', type: 'Team Training', color: 'bg-emerald-100' },
+  { day: 'WEDNESDAY', time: '7:15 PM - 9:00 PM', loc: 'YMCA Shoreline', type: 'Team Training', color: 'bg-emerald-100' },
   { day: 'SATURDAY', time: '10:00 AM - 12:00 PM', loc: 'Ballard Community Center', type: 'Tactics and skills training', color: 'bg-blue-100' },
 ];
 
