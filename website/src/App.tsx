@@ -14,6 +14,7 @@ import {
   MapPin,
   Medal,
   Menu,
+  PauseCircle,
   Radar,
   Swords,
   Ticket,
@@ -171,7 +172,7 @@ const faqItems = [
     question: 'Can I try a practice before committing to a membership?',
     answer: (
       <>
-        Yes! Your first practice is completely free. We want you to come out, meet the team, and see if you enjoy the sport before you pay anything. Just show up to one of our scheduled practices and introduce yourself to a coach or captain.
+        Yes! Your first practice is completely free. We want you to come out, meet the team, and see if you enjoy the sport before you pay anything. Practices are paused until Wednesday, September 2 - after that, just show up to one of our scheduled practices and introduce yourself to a coach or captain.
       </>
     ),
   },
@@ -187,7 +188,7 @@ const faqItems = [
     question: 'Can I join mid-season?',
     answer: (
       <>
-        Absolutely! You don&apos;t need to wait for a new season to start. We welcome new players year-round - just show up to any practice and jump in.
+        Absolutely! You don&apos;t need to wait for a new season to start. We welcome new players year-round - just show up to any practice and jump in once training resumes on September 2.
       </>
     ),
   },
@@ -312,10 +313,10 @@ function App() {
           <img className="hero-bg" src="/img/pic1.jpg" alt="Seattle Handball Club player shooting during a match" />
           <div className="hero-shade" />
           <div className="hero-content">
-            <p className="eyebrow">Now Recruiting for 2026 Season</p>
+            <p className="eyebrow">Season Wrapped - Practices Resume Sept 2</p>
             <h1>Seattle&apos;s Premier Team Handball Club</h1>
             <p className="hero-copy">
-              Join a community of passionate players. Competitive training, regional tournaments, and a friendly environment for all skill levels.
+              Our season is finalized and the club is on pause until Wednesday, September 2. Sign up now to be on the court when weekly training returns.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#schedule">
@@ -339,11 +340,11 @@ function App() {
               <HeartHandshake size={18} aria-hidden="true" /> New players welcome
             </span>
             <h2 id="new-player-heading">First two practices are free.</h2>
-            <p>No membership needed. Bring indoor court shoes, meet the team, and try a friendly training session.</p>
+            <p>Practices are on pause until Wednesday, September 2. No membership needed to start - bring indoor court shoes, meet the team, and try a friendly training session when we&apos;re back.</p>
           </div>
           <div className="new-player-actions">
             <a className="button button-primary" href="#schedule">
-              <CalendarDays size={20} aria-hidden="true" /> Pick a Practice
+              <CalendarDays size={20} aria-hidden="true" /> See When We&apos;re Back
             </a>
             <a className="callout-link" href="mailto:seattlehandballclub@gmail.com?subject=New%20player%20practice">
               Ask a Question <Mail size={18} aria-hidden="true" />
@@ -389,9 +390,16 @@ function App() {
             <div>
               <p className="eyebrow">Training</p>
               <h2>Weekly Schedule</h2>
-              <p>Join us for our regular weekly training sessions.</p>
+              <p>Our regular weekly training sessions, returning Wednesday, September 2.</p>
             </div>
-            <span className="status-pill">Active Season</span>
+            <span className="status-pill is-paused">Season on Pause</span>
+          </div>
+          <div className="schedule-notice">
+            <PauseCircle size={22} aria-hidden="true" />
+            <div>
+              <h3>The season is finalized - no practices until September 2.</h3>
+              <p>Thanks for a great season! There are no Wednesday or Saturday sessions until then. The times below are what we return to.</p>
+            </div>
           </div>
           <div className="schedule-grid">
             {scheduleItems.map((item) => (
@@ -406,6 +414,7 @@ function App() {
                   <MapPin size={18} aria-hidden="true" />
                   <span>{item.location}</span>
                 </div>
+                <span className="paused-pill">Resumes Sept 2</span>
                 <a className="text-link" href={item.directions} target="_blank" rel="noreferrer">
                   Get Directions <ArrowRight size={16} aria-hidden="true" />
                 </a>
