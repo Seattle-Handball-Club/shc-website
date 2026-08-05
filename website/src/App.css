@@ -637,6 +637,7 @@
 .best-value,
 .result-pill,
 .completed-pill,
+.paused-pill,
 .compact-event > span {
   width: fit-content;
   border-radius: 999px;
@@ -650,6 +651,49 @@
   color: #045244;
   background: #e1f2ec;
   border: 1px solid #b6dfd0;
+}
+
+.status-pill.is-paused {
+  color: #8a4a12;
+  background: #fdf0d8;
+  border-color: #f0c44d;
+}
+
+.schedule-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 22px;
+  padding: 20px 22px;
+  color: #4a3a1c;
+  background: #fdf6e5;
+  border: 1px solid #f0c44d;
+  border-radius: 8px;
+}
+
+.schedule-notice svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: #cf4e3c;
+}
+
+.schedule-notice h3 {
+  margin: 0;
+  color: #142420;
+  font-size: 1.15rem;
+}
+
+.schedule-notice p {
+  margin: 6px 0 0;
+  color: #5b6964;
+}
+
+.paused-pill {
+  display: inline-flex;
+  margin-top: 18px;
+  padding: 7px 11px;
+  color: #8a4a12;
+  background: #fdf0d8;
 }
 
 .schedule-grid {
