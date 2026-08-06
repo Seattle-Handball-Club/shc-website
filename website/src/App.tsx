@@ -63,6 +63,8 @@ const scheduleItems = [
     time: '7:15 PM - 9:00 PM',
     location: 'Dale Turner YMCA, Shoreline',
     directions: 'https://maps.google.com/?q=Dale+Turner+Family+YMCA',
+    paused: true,
+    statusLabel: 'Resumes Sept 2',
   },
   {
     day: 'Saturday',
@@ -70,6 +72,8 @@ const scheduleItems = [
     time: '10:00 AM - 12:00 PM',
     location: 'Ballard Community Center, 6020 28th Ave NW, Seattle, WA 98107',
     directions: 'https://maps.google.com/?q=Ballard+Community+Center+6020+28th+Ave+NW+Seattle+WA+98107',
+    paused: false,
+    statusLabel: 'Running All August',
   },
 ]
 
@@ -172,7 +176,7 @@ const faqItems = [
     question: 'Can I try a practice before committing to a membership?',
     answer: (
       <>
-        Yes! Your first practice is completely free. We want you to come out, meet the team, and see if you enjoy the sport before you pay anything. Practices are paused until Wednesday, September 2 - after that, just show up to one of our scheduled practices and introduce yourself to a coach or captain.
+        Yes! Your first practice is completely free. We want you to come out, meet the team, and see if you enjoy the sport before you pay anything. Saturday practices are running all through August - just show up and introduce yourself to a coach or captain. Wednesday sessions resume September 2.
       </>
     ),
   },
@@ -188,7 +192,7 @@ const faqItems = [
     question: 'Can I join mid-season?',
     answer: (
       <>
-        Absolutely! You don&apos;t need to wait for a new season to start. We welcome new players year-round - just show up to any practice and jump in once training resumes on September 2.
+        Absolutely! You don&apos;t need to wait for a new season to start. We welcome new players year-round - come join a Saturday practice this month, or wait for Wednesday training to return on September 2.
       </>
     ),
   },
@@ -313,10 +317,10 @@ function App() {
           <img className="hero-bg" src="/img/pic1.jpg" alt="Seattle Handball Club player shooting during a match" />
           <div className="hero-shade" />
           <div className="hero-content">
-            <p className="eyebrow">Season Wrapped - Practices Resume Sept 2</p>
+            <p className="eyebrow">Saturday Practices On - Wednesdays Resume Sept 2</p>
             <h1>Seattle&apos;s Premier Team Handball Club</h1>
             <p className="hero-copy">
-              Our season is finalized and the club is on pause until Wednesday, September 2. Sign up now to be on the court when weekly training returns.
+              Saturday practices keep running all through August - only Wednesday training is paused until September 2. Sign up now and join us on the court this weekend.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#schedule">
@@ -340,11 +344,11 @@ function App() {
               <HeartHandshake size={18} aria-hidden="true" /> New players welcome
             </span>
             <h2 id="new-player-heading">First two practices are free.</h2>
-            <p>Practices are on pause until Wednesday, September 2. No membership needed to start - bring indoor court shoes, meet the team, and try a friendly training session when we&apos;re back.</p>
+            <p>Saturday practices are still on every week through August - Wednesdays resume September 2. No membership needed to start: bring indoor court shoes, meet the team, and try a friendly Saturday session.</p>
           </div>
           <div className="new-player-actions">
             <a className="button button-primary" href="#schedule">
-              <CalendarDays size={20} aria-hidden="true" /> See When We&apos;re Back
+              <CalendarDays size={20} aria-hidden="true" /> See Practice Times
             </a>
             <a className="callout-link" href="mailto:seattlehandballclub@gmail.com?subject=New%20player%20practice">
               Ask a Question <Mail size={18} aria-hidden="true" />
@@ -390,15 +394,15 @@ function App() {
             <div>
               <p className="eyebrow">Training</p>
               <h2>Weekly Schedule</h2>
-              <p>Our regular weekly training sessions, returning Wednesday, September 2.</p>
+              <p>Our regular weekly training sessions. Saturdays run all through August; Wednesdays return September 2.</p>
             </div>
-            <span className="status-pill is-paused">Season on Pause</span>
+            <span className="status-pill">Saturdays On</span>
           </div>
           <div className="schedule-notice">
             <PauseCircle size={22} aria-hidden="true" />
             <div>
-              <h3>The season is finalized - no practices until September 2.</h3>
-              <p>Thanks for a great season! There are no Wednesday or Saturday sessions until then. The times below are what we return to.</p>
+              <h3>Wednesday practices are suspended until September 2.</h3>
+              <p>Saturday sessions are still on every week through August - same time, same place. Only the Wednesday training is on pause, returning Wednesday, September 2.</p>
             </div>
           </div>
           <div className="schedule-grid">
@@ -414,7 +418,7 @@ function App() {
                   <MapPin size={18} aria-hidden="true" />
                   <span>{item.location}</span>
                 </div>
-                <span className="paused-pill">Resumes Sept 2</span>
+                <span className={item.paused ? 'paused-pill' : 'active-pill'}>{item.statusLabel}</span>
                 <a className="text-link" href={item.directions} target="_blank" rel="noreferrer">
                   Get Directions <ArrowRight size={16} aria-hidden="true" />
                 </a>

@@ -638,6 +638,7 @@
 .result-pill,
 .completed-pill,
 .paused-pill,
+.active-pill,
 .compact-event > span {
   width: fit-content;
   border-radius: 999px;
@@ -694,6 +695,14 @@
   padding: 7px 11px;
   color: #8a4a12;
   background: #fdf0d8;
+}
+
+.active-pill {
+  display: inline-flex;
+  margin-top: 18px;
+  padding: 7px 11px;
+  color: #045244;
+  background: #e1f2ec;
 }
 
 .schedule-grid {
