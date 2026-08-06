@@ -689,18 +689,19 @@
   color: #5b6964;
 }
 
-.paused-pill {
+.paused-pill,
+.active-pill {
   display: inline-flex;
   margin-top: 18px;
   padding: 7px 11px;
+}
+
+.paused-pill {
   color: #8a4a12;
   background: #fdf0d8;
 }
 
 .active-pill {
-  display: inline-flex;
-  margin-top: 18px;
-  padding: 7px 11px;
   color: #045244;
   background: #e1f2ec;
 }
