@@ -27,7 +27,6 @@ import './App.css'
 
 const playpassUrl = 'https://playpass.com/seattle-handball-club'
 const seasonSignupUrl = 'https://playpass.com/seattle-handball-club/seattle-handball-club-2025-2026-season-AXhvJ2F'
-const baseUrl = import.meta.env.BASE_URL
 
 const navItems = [
   { label: 'About', href: '#about' },
@@ -276,7 +275,7 @@ function App() {
     <div className="site-shell">
       <nav className="site-nav" aria-label="Main navigation">
         <a className="brand" href="#top" onClick={closeMenu} aria-label="Seattle Handball Club home">
-          <img src={`${baseUrl}img/logo.png`} alt="" className="brand-mark" />
+          <img src="/img/logo.png" alt="" className="brand-mark" />
           <span>Seattle Handball</span>
         </a>
 
@@ -315,7 +314,7 @@ function App() {
 
       <main id="top">
         <header className="hero-section">
-          <img className="hero-bg" src={`${baseUrl}img/pic1.jpg`} alt="Seattle Handball Club player shooting during a match" />
+          <img className="hero-bg" src="/img/pic1.jpg" alt="Seattle Handball Club player shooting during a match" />
           <div className="hero-shade" />
           <div className="hero-content">
             <p className="eyebrow">Saturday Practices On - Wednesdays Resume Sept 2</p>
