@@ -26,7 +26,7 @@ import {
 import './App.css'
 
 const playpassUrl = 'https://playpass.com/seattle-handball-club'
-const seasonSignupUrl = 'https://playpass.com/seattle-handball-club/seattle-handball-club-2025-2026-season-AXhvJ2F'
+const seasonSignupUrl = 'https://playpass.com/go/AyP3X5r'
 
 const navItems = [
   { label: 'About', href: '#about' },
@@ -80,7 +80,7 @@ const scheduleItems = [
 const membershipPlans = [
   {
     name: 'Half Season',
-    price: '$220',
+    price: '$235',
     cadence: '/ season',
     description: 'Perfect for those joining mid-year or wanting to try it out.',
     features: ['Gym rental & Equipment', 'Professional Coaching', '1 Tournament Included'],
@@ -89,7 +89,7 @@ const membershipPlans = [
   },
   {
     name: 'Full Season',
-    price: '$400',
+    price: '$425',
     cadence: '/ year',
     description: 'For the committed player who wants the full experience.',
     features: ['Gym rental & Equipment', 'Professional Coaching', '2 Tournaments Included'],
@@ -113,14 +113,22 @@ const mediaItems = [
 
 const upcomingEvents = [
   {
-    label: 'World Series',
-    date: 'Aug 5-9',
-    place: 'Las Vegas, NV',
-    status: 'Confirmed',
+    label: 'Future Event Coming Up',
+    date: 'Dates TBA',
+    place: 'Upcoming tournaments will be announced here',
+    status: 'Stay Tuned',
   },
 ]
 
 const pastEvents = [
+  {
+    date: 'AUG 2026',
+    days: '5-9',
+    title: 'Worldseries of Handball',
+    place: 'Las Vegas, NV',
+    description: 'Seattle traveled to Las Vegas for the Worldseries of Handball, taking on clubs from across the country and beyond.',
+    result: '4th Place',
+  },
   {
     date: 'APR 2026',
     days: '3-5',
@@ -144,14 +152,6 @@ const pastEvents = [
     place: 'Richmond Oval, Vancouver, BC',
     description: 'A strong showing for Seattle at the 6th edition of the Vancouver Cup, battling top Canadian and PNW clubs.',
     result: '2nd Place',
-  },
-  {
-    date: 'MAR 2025',
-    days: '28-30',
-    title: 'Seattle Cup 2025',
-    place: 'Everett Community College, Everett, WA',
-    description: "The inaugural Team Handball Tournament in Seattle! Teams from across the region competed in Men's & Women's divisions.",
-    result: '3rd Place',
   },
 ]
 
