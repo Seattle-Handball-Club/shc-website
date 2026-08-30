@@ -14,7 +14,6 @@ import {
   MapPin,
   Medal,
   Menu,
-  PauseCircle,
   Radar,
   Swords,
   Ticket,
@@ -58,22 +57,22 @@ const featureCards = [
 
 const scheduleItems = [
   {
-    day: 'Wednesday',
-    title: 'Team Training',
-    time: '7:15 PM - 9:00 PM',
-    location: 'Dale Turner YMCA, Shoreline',
-    directions: 'https://maps.google.com/?q=Dale+Turner+Family+YMCA',
-    paused: true,
-    statusLabel: 'Resumes Sept 2',
-  },
-  {
     day: 'Saturday',
     title: 'Tactics & Skills',
-    time: '10:00 AM - 12:00 PM',
-    location: 'Ballard Community Center, 6020 28th Ave NW, Seattle, WA 98107',
+    time: '3:00–5:00 PM',
+    location: 'Ballard Community Center',
     directions: 'https://maps.google.com/?q=Ballard+Community+Center+6020+28th+Ave+NW+Seattle+WA+98107',
     paused: false,
-    statusLabel: 'Running All August',
+    statusLabel: 'Weekly',
+  },
+  {
+    day: 'Wednesday',
+    title: 'Team Training',
+    time: '7:15–9:00 PM',
+    location: 'Dale Turner YMCA, Shoreline',
+    directions: 'https://maps.google.com/?q=Dale+Turner+Family+YMCA',
+    paused: false,
+    statusLabel: 'Weekly',
   },
 ]
 
@@ -81,18 +80,18 @@ const membershipPlans = [
   {
     name: 'Half Season',
     price: '$235',
-    cadence: '/ season',
+    cadence: '/ half season',
     description: 'Perfect for those joining mid-year or wanting to try it out.',
-    features: ['Gym rental & Equipment', 'Professional Coaching', '1 Tournament Included'],
+    features: ['Gym rental & equipment', 'Professional coaching', '2 tournaments included', 'Student discounts available'],
     cta: 'Select Plan',
     featured: false,
   },
   {
     name: 'Full Season',
     price: '$425',
-    cadence: '/ year',
+    cadence: '/ full season',
     description: 'For the committed player who wants the full experience.',
-    features: ['Gym rental & Equipment', 'Professional Coaching', '2 Tournaments Included'],
+    features: ['Gym rental & equipment', 'Professional coaching', '2 tournaments included', 'Student discounts available'],
     cta: 'Join Full Season',
     featured: true,
   },
@@ -113,10 +112,33 @@ const mediaItems = [
 
 const upcomingEvents = [
   {
-    label: 'Future Event Coming Up',
-    date: 'Dates TBA',
-    place: 'Upcoming tournaments will be announced here',
-    status: 'Stay Tuned',
+    label: 'Vancouver Cup',
+    date: 'Nov 7–8',
+    status: 'Upcoming',
+  },
+  {
+    label: 'Denver Cup',
+    date: 'Dec 5–6',
+    place: 'Colorado Springs',
+    status: 'Upcoming',
+  },
+  {
+    label: 'California Cup',
+    date: 'Jan 28–30',
+    place: 'San Francisco',
+    status: 'Upcoming',
+  },
+  {
+    label: 'Seattle Cup',
+    date: 'Mar 18–20',
+    place: 'Everett, WA',
+    status: 'Upcoming',
+  },
+  {
+    label: 'US Open Nationals',
+    date: 'May 13–16',
+    place: 'Location TBD',
+    status: 'Upcoming',
   },
 ]
 
@@ -176,7 +198,7 @@ const faqItems = [
     question: 'Can I try a practice before committing to a membership?',
     answer: (
       <>
-        Yes! Your first practice is completely free. We want you to come out, meet the team, and see if you enjoy the sport before you pay anything. Saturday practices are running all through August - just show up and introduce yourself to a coach or captain. Wednesday sessions resume September 2.
+        Yes! Your first practice is completely free. We want you to come out, meet the team, and see if you enjoy the sport before you pay anything. Join us at either weekly session and introduce yourself to a coach or captain.
       </>
     ),
   },
@@ -192,7 +214,7 @@ const faqItems = [
     question: 'Can I join mid-season?',
     answer: (
       <>
-        Absolutely! You don&apos;t need to wait for a new season to start. We welcome new players year-round - come join a Saturday practice this month, or wait for Wednesday training to return on September 2.
+        Absolutely! You don&apos;t need to wait for a new season to start. We welcome new players year-round, so come join either of our weekly practices.
       </>
     ),
   },
@@ -317,10 +339,10 @@ function App() {
           <img className="hero-bg" src="/img/pic1.jpg" alt="Seattle Handball Club player shooting during a match" />
           <div className="hero-shade" />
           <div className="hero-content">
-            <p className="eyebrow">Saturday Practices On - Wednesdays Resume Sept 2</p>
+            <p className="eyebrow">Registration Open for the New Season</p>
             <h1>Seattle&apos;s Premier Team Handball Club</h1>
             <p className="hero-copy">
-              Saturday practices keep running all through August - only Wednesday training is paused until September 2. Sign up now and join us on the court this weekend.
+              Practice Saturdays from 3:00–5:00 PM in Ballard and Wednesdays from 7:15–9:00 PM in Shoreline. Sign up now and join us on the court.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#schedule">
@@ -344,7 +366,7 @@ function App() {
               <HeartHandshake size={18} aria-hidden="true" /> New players welcome
             </span>
             <h2 id="new-player-heading">First two practices are free.</h2>
-            <p>Saturday practices are still on every week through August - Wednesdays resume September 2. No membership needed to start: bring indoor court shoes, meet the team, and try a friendly Saturday session.</p>
+            <p>No membership needed to start: bring indoor court shoes, meet the team, and try either of our friendly weekly sessions.</p>
           </div>
           <div className="new-player-actions">
             <a className="button button-primary" href="#schedule">
@@ -394,16 +416,9 @@ function App() {
             <div>
               <p className="eyebrow">Training</p>
               <h2>Weekly Schedule</h2>
-              <p>Our regular weekly training sessions. Saturdays run all through August; Wednesdays return September 2.</p>
+              <p>Our regular weekly training sessions in Ballard and Shoreline.</p>
             </div>
-            <span className="status-pill">Saturdays On</span>
-          </div>
-          <div className="schedule-notice">
-            <PauseCircle size={22} aria-hidden="true" />
-            <div>
-              <h3>Wednesday practices are suspended until September 2.</h3>
-              <p>Saturday sessions are still on every week through August - same time, same place. Only the Wednesday training is on pause, returning Wednesday, September 2.</p>
-            </div>
+            <span className="status-pill">Weekly Practices</span>
           </div>
           <div className="schedule-grid">
             {scheduleItems.map((item) => (
@@ -429,9 +444,13 @@ function App() {
 
         <section id="membership" className="section membership-section">
           <div className="section-heading">
-            <p className="eyebrow">Pricing</p>
+            <p className="eyebrow">How to Sign Up</p>
             <h2>Membership Options</h2>
-            <p>Support the club and get access to all training sessions, equipment, and club events.</p>
+            <p>
+              Register now for the new season through{' '}
+              <a href={seasonSignupUrl} target="_blank" rel="noreferrer">Seattle HC Registration</a>.
+              Supporters donating $450 or more are eligible for a discounted $50 membership.
+            </p>
           </div>
           <div className="plans-grid">
             {membershipPlans.map((plan) => (
@@ -508,7 +527,7 @@ function App() {
                 <article className="event-card compact-event" key={event.label}>
                   <div>
                     <h3>{event.label}</h3>
-                    <p>{event.date} - {event.place}</p>
+                    <p>{event.date}{event.place ? ` - ${event.place}` : ''}</p>
                   </div>
                   <span>{event.status}</span>
                 </article>

@@ -775,6 +775,12 @@
   color: rgba(255, 255, 255, 0.78);
 }
 
+.membership-section .section-heading a {
+  color: #f0c44d;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .plans-grid {
   grid-template-columns: repeat(2, minmax(0, 420px));
   justify-content: center;
