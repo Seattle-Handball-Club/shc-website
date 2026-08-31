@@ -59,7 +59,7 @@ const scheduleItems = [
   {
     day: 'Saturday',
     title: 'Tactics & Skills',
-    time: '3:00–5:00 PM',
+    time: '3:00-5:00 PM',
     location: 'Ballard Community Center',
     directions: 'https://maps.google.com/?q=Ballard+Community+Center+6020+28th+Ave+NW+Seattle+WA+98107',
     paused: false,
@@ -68,7 +68,7 @@ const scheduleItems = [
   {
     day: 'Wednesday',
     title: 'Team Training',
-    time: '7:15–9:00 PM',
+    time: '7:15-9:00 PM',
     location: 'Dale Turner YMCA, Shoreline',
     directions: 'https://maps.google.com/?q=Dale+Turner+Family+YMCA',
     paused: false,
@@ -80,16 +80,16 @@ const membershipPlans = [
   {
     name: 'Half Season',
     price: '$235',
-    cadence: '/ half season',
+    cadence: '/ half season + fees',
     description: 'Perfect for those joining mid-year or wanting to try it out.',
-    features: ['Gym rental & equipment', 'Professional coaching', '2 tournaments included', 'Student discounts available'],
+    features: ['Gym rental & equipment', 'Professional coaching', '1 tournament included', 'Student discounts available'],
     cta: 'Select Plan',
     featured: false,
   },
   {
     name: 'Full Season',
     price: '$425',
-    cadence: '/ full season',
+    cadence: '/ full season + fees',
     description: 'For the committed player who wants the full experience.',
     features: ['Gym rental & equipment', 'Professional coaching', '2 tournaments included', 'Student discounts available'],
     cta: 'Join Full Season',
@@ -112,31 +112,32 @@ const mediaItems = [
 
 const upcomingEvents = [
   {
-    label: 'Vancouver Cup',
-    date: 'Nov 7–8',
+    label: 'Vancouver Cup 2026',
+    date: 'Nov 7-8, 2026',
+    place: 'Vancouver, BC',
     status: 'Upcoming',
   },
   {
-    label: 'Denver Cup',
-    date: 'Dec 5–6',
-    place: 'Colorado Springs',
+    label: 'Denver Cup 2026',
+    date: 'Dec 5-6, 2026',
+    place: 'Colorado Springs, CO',
     status: 'Upcoming',
   },
   {
-    label: 'California Cup',
-    date: 'Jan 28–30',
-    place: 'San Francisco',
+    label: 'CalCup 2027',
+    date: 'Jan 28-30, 2027',
+    place: 'Bay Area, CA',
     status: 'Upcoming',
   },
   {
-    label: 'Seattle Cup',
-    date: 'Mar 18–20',
+    label: 'Seattle Cup 2027',
+    date: 'Mar 18-20, 2027',
     place: 'Everett, WA',
     status: 'Upcoming',
   },
   {
-    label: 'US Open Nationals',
-    date: 'May 13–16',
+    label: 'US Nationals 2027',
+    date: 'May 13-16, 2027',
     place: 'Location TBD',
     status: 'Upcoming',
   },
@@ -154,7 +155,7 @@ const pastEvents = [
   {
     date: 'APR 2026',
     days: '3-5',
-    title: 'Seattle Handball Cup 2026',
+    title: 'Seattle Cup 2026',
     place: 'Everett Community College, Everett, WA',
     description: 'Our home tournament returned to Everett, with teams from across the region continuing the PNW handball tradition. Seattle Blue took home the title!',
     result: '1st Place - Seattle Blue',
@@ -164,7 +165,7 @@ const pastEvents = [
     days: '30-31',
     title: 'CalCup 2026 (19th Edition)',
     place: 'Centerville Jr. High, Fremont, CA',
-    description: 'Seattle competed at the 19th annual California Cup, one of the largest handball tournaments on the West Coast.',
+    description: 'Seattle competed at the 19th annual CalCup, one of the largest handball tournaments on the West Coast.',
     result: '6th Place',
   },
   {
@@ -198,7 +199,7 @@ const faqItems = [
     question: 'Can I try a practice before committing to a membership?',
     answer: (
       <>
-        Yes! Your first practice is completely free. We want you to come out, meet the team, and see if you enjoy the sport before you pay anything. Join us at either weekly session and introduce yourself to a coach or captain.
+        Yes! Your first two practices are completely free. We want you to come out, meet the team, and see if you enjoy the sport before you pay anything. Join us at either weekly session and introduce yourself to a coach or captain.
       </>
     ),
   },
@@ -342,7 +343,7 @@ function App() {
             <p className="eyebrow">Registration Open for the New Season</p>
             <h1>Seattle&apos;s Premier Team Handball Club</h1>
             <p className="hero-copy">
-              Practice Saturdays from 3:00–5:00 PM in Ballard and Wednesdays from 7:15–9:00 PM in Shoreline. Sign up now and join us on the court.
+              Practice Saturdays from 3:00-5:00 PM in Ballard and Wednesdays from 7:15-9:00 PM in Shoreline. Sign up now and join us on the court.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#schedule">
@@ -449,7 +450,7 @@ function App() {
             <p>
               Register now for the new season through{' '}
               <a href={seasonSignupUrl} target="_blank" rel="noreferrer">Seattle HC Registration</a>.
-              Supporters donating $450 or more are eligible for a discounted $50 membership.
+              Supporters who make a tax-deductible donation of $450 or more are eligible for a discounted $50 membership.
             </p>
           </div>
           <div className="plans-grid">
@@ -527,7 +528,7 @@ function App() {
                 <article className="event-card compact-event" key={event.label}>
                   <div>
                     <h3>{event.label}</h3>
-                    <p>{event.date}{event.place ? ` - ${event.place}` : ''}</p>
+                    <p>{event.date} - {event.place}</p>
                   </div>
                   <span>{event.status}</span>
                 </article>

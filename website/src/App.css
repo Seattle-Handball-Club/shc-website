@@ -998,6 +998,7 @@
   gap: 6px;
   margin: 4px 8px 0 0;
   padding: 6px 9px;
+  vertical-align: middle;
 }
 
 .result-pill {

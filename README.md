@@ -24,13 +24,10 @@ It's a single-page React site that tells prospective players who we are, when an
         ├── App.tsx                # The entire page: content data + all sections
         ├── App.css                # Nearly all styling
         ├── index.css              # Base/reset styles
-        ├── main.tsx               # React entry point
-        └── index.tsx              # UNUSED — see note below
+        └── main.tsx               # React entry point
 ```
 
 The site is essentially one file. `src/App.tsx` holds both the content and the markup, and `src/App.css` holds the styles.
-
-> **Careful:** `src/index.tsx` is an abandoned earlier design of the site (Tailwind-style utility classes, its own `scheduleItems`, its own pricing copy). Nothing imports it — `index.html` loads `main.tsx`, which renders `App.tsx`. Edits made there will not show up on the site. Either ignore it or delete it; don't treat it as live code.
 
 ## Running it locally
 
@@ -70,9 +67,10 @@ Almost all copy lives in module-level `const` arrays near the top of `src/App.ts
 | Tournaments we've played, with placements | `pastEvents` |
 | Frequently asked questions | `faqItems` |
 
-Two conventions worth knowing:
+A few conventions worth knowing:
 
-- **Upcoming vs. past events.** When a tournament is over, move its entry from `upcomingEvents` to `pastEvents`, fill in the `result` (e.g. `'4th Place'`), and give it a `date`/`days` pair (`'AUG 2026'` / `'5-9'`). `pastEvents` renders newest first, so add finished tournaments at the top of the array. `upcomingEvents` should never sit empty — keep at least the generic "Future Event Coming Up" placeholder so the section still reads sensibly between tournaments.
+- **Upcoming vs. past events.** When a tournament is over, move its entry from `upcomingEvents` to `pastEvents`, fill in the `result` (e.g. `'4th Place'`), and swap the `date`/`place` pair for a `date`/`days` pair (`'AUG 2026'` / `'5-9'`) plus a `description`. `pastEvents` renders newest first, so add finished tournaments at the top of the array. If `upcomingEvents` ever empties out, add a placeholder entry rather than leaving the array bare, so the section still reads sensibly between seasons.
+- **Naming and dates.** Tournament names are consistent across both lists and the FAQ: **CalCup**, **Seattle Cup**, **Vancouver Cup**, **Denver Cup**, **US Nationals** — always followed by the year (`'CalCup 2027'`). Upcoming entries carry the year in `date` too (`'Jan 28-30, 2027'`), since the season straddles two calendar years. Use plain hyphens (`-`) for ranges and separators, not en dashes.
 - **Images.** Drop files in `website/public/img/` and reference them as `/img/filename.jpg`.
 
 Section anchors used by the nav are the `id`s on each `<section>` in `App.tsx`: `about`, `court`, `schedule`, `membership`, `gallery`, `media`, `events`, `faq`.
